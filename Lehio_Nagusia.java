@@ -21,6 +21,7 @@ import java.awt.event.MouseEvent;
 import javax.swing.JMenuBar;
 import javax.swing.JMenu;
 import javax.swing.JMenuItem;
+import java.awt.Color;
 
 public class Lehio_Nagusia extends JFrame {
 
@@ -59,6 +60,8 @@ public class Lehio_Nagusia extends JFrame {
 		d = Grafiko_Kontrolagailua.getNireDatuak();
 		
 		JButton btnDatuakKargatu = new JButton("Datuak Kargatu");
+		btnDatuakKargatu.setBackground(Color.BLACK);
+		btnDatuakKargatu.setForeground(Color.BLACK);
 		btnDatuakKargatu.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				try {
@@ -70,23 +73,25 @@ public class Lehio_Nagusia extends JFrame {
 				}
 			}
 		});
-		btnDatuakKargatu.setBounds(194, 63, 209, 23);
+		btnDatuakKargatu.setBounds(194, 100, 209, 23);
 		contentPane.add(btnDatuakKargatu);
 		
 		JButton btnNewButton = new JButton("Datuak Ezabatu");
+		btnNewButton.setBackground(Color.BLACK);
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				d.datuakEzabatu();
 			}
 		});
-		btnNewButton.setBounds(194, 140, 209, 23);
+		btnNewButton.setBounds(194, 210, 209, 23);
 		contentPane.add(btnNewButton);
 		
 		JMenuBar menuBar = new JMenuBar();
-		menuBar.setBounds(275, 220, 33, 21);
+		menuBar.setBounds(275, 320, 33, 21);
 		contentPane.add(menuBar);
 		
 		JMenu mnIkusi = new JMenu("Ikusi");
+		mnIkusi.setBackground(Color.BLACK);
 		mnIkusi.setBounds(194, 219, 209, 22);
 		
 		JMenuItem mntmPelikulak = new JMenuItem("Pelikulak");
