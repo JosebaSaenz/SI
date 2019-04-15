@@ -24,9 +24,13 @@ public class IragazteSistema {
 		return nIragazteSistema;
 	}
 	
-	public ArrayList<Integer> gomendatu(int idUser){  
-		ArrayList<Integer> gomendioak = new ArrayList<Integer>();
+	public ArrayList<String> gomendatu(int idUser){  
+		ArrayList<String> gomendioak = new ArrayList<String>();
+		Tupla[] balorazioak = this.estimazioak(idUser);
+		TuplaOrdenazioa.getTuplaAntzekOrdenazioa().handTxikOrdenatu(balorazioak);
+		gomendioak = PelikulaKatalogo.getPelikulaKatalogo().tuplatikIzenakLortu(balorazioak);
 		return gomendioak;
+		
 	}
 	/*
 	public double erabiltzaileaBalorazioaEstimazioa(int idUser, int idMovie) throws ErabiltzaileaEzDaExistitzenException, PelikulaEzDaExistitzenException {
@@ -59,15 +63,32 @@ public class IragazteSistema {
 		return ezau.balorazioEstimazioa(idUser, idMovie);
 	}
 	*/
-	public Bektorea erabiltzaileBalorazioEstimazioak(int idUser) {
-		return erab.balorazioEstimazioak(idUser);
+	private Tupla[] estimazioak(int idUser){
+		ArrayList<Integer> pelikulenIdak = new ArrayList<Integer>();
+		pelikulenIdak = PelikulaKatalogo.getPelikulaKatalogo().idGuztiak();
+		Erabiltzailea erabiltzailea = null;
+		try {
+			erabiltzailea = GomendioSistema.getGomendioSistema().getErabiltzailea(idUser);
+		} catch (ErabiltzaileaEzDaExistitzenException e) {
+			e.printStackTrace();
+		}
+		Tupla[] balorazioak = new Tupla[pelikulenIdak.size()-erabiltzailea.ikusitakoPelikulaKop()];
+		for (int i=0; i<pelikulenIdak.size();i++) {
+			if (!erabiltzailea.ikusiDu(pelikulenIdak.get(i))) {
+				int idMovie = pelikulenIdak.get(i);
+				double notaerab = erab.balorazioEstimazioa(idUser, idMovie);
+				double notaezaug = ezau.balorazioEstimazioa(idUser, idMovie);
+				double notaproduk = produk.balorazioEstimazioa(idUser, idMovie);
+				double batazBeste= this.notaMediaLortu(notaerab, notaezaug, notaproduk);
+				if (batazBeste>=3.5) {
+					balorazioak[i] = new Tupla(idMovie,batazBeste);
+				}
+			}
+		}
+		return balorazioak;
 	}
 	
-	public Bektorea produktuBalorazioEstimazioak(int idUser) {
-		return produk.balorazioEstimazioak(idUser);
-	}
-	
-	public Bektorea ezaugarriBalorazioEstimazioak(int idUser) {
-		return ezau.balorazioEstimazioak(idUser);
+	private double notaMediaLortu(double erab, double ezaug, double produk) {
+		return (0.5*erab)+(ezaug*0.25)+(produk*0.25);
 	}
 }
