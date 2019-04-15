@@ -36,24 +36,6 @@ public class EzaugarriIragaztea {
 	private double notaAjustatu(double nota) {
 		return (nota+1)*2.5;
 	}
-	
-	public Bektorea balorazioEstimazioak(int idUser){
-		Bektorea balorazioak = new Bektorea();
-		ArrayList<Integer> pelikulenIdak = new ArrayList<Integer>();
-		pelikulenIdak = PelikulaKatalogo.getPelikulaKatalogo().idGuztiak();
-		Erabiltzailea erab = null;
-		try {
-			erab = GomendioSistema.getGomendioSistema().getErabiltzailea(idUser);
-		} catch (ErabiltzaileaEzDaExistitzenException e) {
-			e.printStackTrace();
-		}
-		for (int i=0; i<pelikulenIdak.size();i++) {
-			if (!erab.ikusiDu(pelikulenIdak.get(i))) {
-				balorazioak.gehituElementua(pelikulenIdak.get(i), this.notaAjustatu(this.balorazioEstimazioa(idUser, pelikulenIdak.get(i))));
-			}
-		}
-		return balorazioak;
-	}
 
 
 	public static void main(String[] args) throws ErabiltzaileaEzDaExistitzenException, PelikulaEzDaExistitzenException, KargaMotaEzDaExistitzenException {
