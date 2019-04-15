@@ -19,7 +19,7 @@ public class EzaugarriIragaztea {
 			}
 		}
 		double emaitza = AntzekotasunKalkulua.getAntzekotasunKalkulua().antzekotasunaKalkulatu(pertsonaEredua, KomentarioenMatrizea.getKomentarioenMatrizea().getPeliKomentarioErabilgarriak(idMovie));
-		return emaitza;
+		return this.notaAjustatu(emaitza);
 	}
 
 	private void bektoreBatura(Bektorea pertsonaEredua, Bektorea produkEredua) {
