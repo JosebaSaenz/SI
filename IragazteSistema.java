@@ -28,7 +28,11 @@ public class IragazteSistema {
 		ArrayList<String> gomendioak = new ArrayList<String>();
 		Tupla[] balorazioak = this.estimazioak(idUser);
 		TuplaOrdenazioa.getTuplaAntzekOrdenazioa().handTxikOrdenatu(balorazioak);
-		gomendioak = PelikulaKatalogo.getPelikulaKatalogo().tuplatikIzenakLortu(balorazioak);
+		Tupla[] balorazioFinala = new Tupla[10];
+		for (int i=0;i<10;i++) {
+			balorazioFinala[i]= balorazioak[i];
+			}
+		gomendioak = PelikulaKatalogo.getPelikulaKatalogo().tuplatikIzenakLortu(balorazioFinala);
 		return gomendioak;
 		
 	}
