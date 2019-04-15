@@ -3,6 +3,7 @@ package Proiektua;
 import java.util.ArrayList;
 
 import Salbuespenak.ErabiltzaileaEzDaExistitzenException;
+import Salbuespenak.KargaMotaEzDaExistitzenException;
 import Salbuespenak.PelikulaEzDaExistitzenException;
 
 public class IragazteSistema {
@@ -31,12 +32,11 @@ public class IragazteSistema {
 		Tupla[] balorazioFinala = new Tupla[10];
 		for (int i=0;i<10;i++) {
 			balorazioFinala[i]= balorazioak[i];
-			}
+		}
 		gomendioak = PelikulaKatalogo.getPelikulaKatalogo().tuplatikIzenakLortu(balorazioFinala);
 		return gomendioak;
-		
 	}
-	/*
+	
 	public double erabiltzaileaBalorazioaEstimazioa(int idUser, int idMovie) throws ErabiltzaileaEzDaExistitzenException, PelikulaEzDaExistitzenException {
 		if (!GomendioSistema.getGomendioSistema().erregistratutaDago(idUser)) {
 			throw new ErabiltzaileaEzDaExistitzenException(idUser);
@@ -66,7 +66,7 @@ public class IragazteSistema {
 		}
 		return ezau.balorazioEstimazioa(idUser, idMovie);
 	}
-	*/
+	
 	private Tupla[] estimazioak(int idUser){
 		ArrayList<Integer> pelikulenIdak = new ArrayList<Integer>();
 		pelikulenIdak = PelikulaKatalogo.getPelikulaKatalogo().idGuztiak();
@@ -77,6 +77,7 @@ public class IragazteSistema {
 			e.printStackTrace();
 		}
 		Tupla[] balorazioak = new Tupla[pelikulenIdak.size()-erabiltzailea.ikusitakoPelikulaKop()];
+		int kont = 0;
 		for (int i=0; i<pelikulenIdak.size();i++) {
 			if (!erabiltzailea.ikusiDu(pelikulenIdak.get(i))) {
 				int idMovie = pelikulenIdak.get(i);
@@ -84,9 +85,8 @@ public class IragazteSistema {
 				double notaezaug = ezau.balorazioEstimazioa(idUser, idMovie);
 				double notaproduk = produk.balorazioEstimazioa(idUser, idMovie);
 				double batazBeste= this.notaMediaLortu(notaerab, notaezaug, notaproduk);
-				if (batazBeste>=3.5) {
-					balorazioak[i] = new Tupla(idMovie,batazBeste);
-				}
+				balorazioak[kont] = new Tupla(idMovie,batazBeste);
+				kont ++;
 			}
 		}
 		return balorazioak;
@@ -94,5 +94,13 @@ public class IragazteSistema {
 	
 	private double notaMediaLortu(double erab, double ezaug, double produk) {
 		return (0.5*erab)+(ezaug*0.25)+(produk*0.25);
+	}
+	
+	public static void main(String[] args) throws ErabiltzaileaEzDaExistitzenException, PelikulaEzDaExistitzenException, KargaMotaEzDaExistitzenException {
+		GomendioSistema.getGomendioSistema().datuakKargatu();
+		ArrayList<String> zer = IragazteSistema.getIragazteSistema().gomendatu(555);
+		for(int i=0; i<zer.size(); i++) {
+			System.out.println(zer.get(i));
+		}
 	}
 }
