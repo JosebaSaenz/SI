@@ -27,7 +27,7 @@ public class Bektorea {
 		return zerrenda.containsKey(idErreala);
 	}
 
-	public double getBalioa(int idErreala) throws NullPointerException{
+	public double getBalioa(int idErreala){
 		return zerrenda.get(idErreala);
 	}
 
@@ -42,24 +42,45 @@ public class Bektorea {
 	public double getPosiziokoBalioa(int pPos) {
 		return zerrenda.get(idItzultzailea.get(pPos));
 	}
+	
+	public void gehituBalioa(int idErreala, double pBalioa) {
+		zerrenda.put(idErreala, zerrenda.get(idErreala)+pBalioa);
+	}
+	
+	public void aldatuPosiziokoBalioa(int pPos, double pBalioa) {
+		zerrenda.put(idItzultzailea.get(pPos),pBalioa);
+	}
 
-	public double bektorearenBatezbestekoa() {		// zerrendaren balioen batezbestekoa kalkulatu
+	public double bektorearenBatezbestekoa() {					// zerrendaren balioen batezbestekoa kalkulatu
 		double emaitza = 0.0;
-		for(int i=0; i<zerrenda.size(); i++) {
-			emaitza = emaitza + zerrenda.get(idItzultzailea.get(i));
+		if(zerrenda.size() > 0) {
+			for(int i=0; i<zerrenda.size(); i++) {
+				emaitza = emaitza + zerrenda.get(idItzultzailea.get(i));
+			}
+			emaitza = (double)emaitza/zerrenda.size();
 		}
-		emaitza = (double)emaitza/zerrenda.size();
 		return emaitza;
 	}
 
 	public double bektorearenDesbiderapenEstandarra() {			// zerrendaren balioen desbiderapen estandarra kalkulatu
 		double emaitza = 0.0;
-		double batezbestekoa = bektorearenBatezbestekoa();
-		for(int i=0; i<zerrenda.size(); i++) {
-			emaitza = emaitza + Math.pow(zerrenda.get(idItzultzailea.get(i)) - batezbestekoa, 2);
+		if(zerrenda.size() > 0) {
+			double batezbestekoa = bektorearenBatezbestekoa();
+			for(int i=0; i<zerrenda.size(); i++) {
+				emaitza = emaitza + Math.pow(zerrenda.get(idItzultzailea.get(i)) - batezbestekoa, 2);
+			}
+			emaitza = Math.sqrt((double)emaitza/zerrenda.size());
 		}
-		emaitza = Math.sqrt((double)emaitza/zerrenda.size());
 		return emaitza;
 	}
 	
+	public double bektorearenModulua() {
+		double emaitza = 0.0;
+		if(zerrenda.size() > 0) {
+			for(int i=0; i<zerrenda.size(); i++) {
+				emaitza = emaitza + Math.pow(zerrenda.get(idItzultzailea.get(i)), 2);
+			}
+		}
+		return Math.sqrt(emaitza);
+	}
 }
