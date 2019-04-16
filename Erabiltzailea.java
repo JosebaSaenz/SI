@@ -29,5 +29,9 @@ public class Erabiltzailea {
 	public int ikusitakoPelikulaKop() {
 		return ikusitakoPelikulak.pelikulaKop();
 	}
+	
+	public boolean pasahitzZuzena(int pPasahitza) {
+		return this.pasahitza==pPasahitza;
+	}
 
 }
