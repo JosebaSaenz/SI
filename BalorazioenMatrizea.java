@@ -14,6 +14,7 @@ public class BalorazioenMatrizea {
 	private Bektorea[] matPeliErab;
 	private HashMap<Integer,Integer> peliItzultzailea;
 	private HashMap<Integer,Integer> erabItzultzailea;
+	private HashMap<Integer,Integer> erabItzultzaileaAlderantziz;
 	private Bektorea[] matErabPeliNormalizatua;
 	private Bektorea[] matPeliErabNormalizatua;
 	
@@ -27,18 +28,21 @@ public class BalorazioenMatrizea {
 		
 		this.peliItzultzailea= new HashMap<Integer,Integer>();
 		this.erabItzultzailea= new HashMap<Integer,Integer>();
+		this.erabItzultzaileaAlderantziz= new HashMap<Integer,Integer>();
 		this.matErabPeli = new Bektorea[GomendioSistema.getGomendioSistema().zenbatErabiltzaile()];
 		this.matPeliErab = new Bektorea[PelikulaKatalogo.getPelikulaKatalogo().zenbatPelikula()];
 		this.matErabPeliNormalizatua = new Bektorea[GomendioSistema.getGomendioSistema().zenbatErabiltzaile()];
+		this.matPeliErabNormalizatua = new Bektorea[GomendioSistema.getGomendioSistema().zenbatErabiltzaile()];
 		for(int i=0; i<matErabPeli.length; i++) {
 			matErabPeli[i] = new Bektorea();
 		}
 		for(int i=0; i<matPeliErab.length; i++) {
 			matPeliErab[i] = new Bektorea();
+			matPeliErabNormalizatua[i] = new Bektorea();
 		}
 		this.matrizeakBete();
 		this.matErabPeliNormalizatua = NormalizazioKalkulua.getNormalizazioKalkulua().matrizeaNormalizatu(matErabPeli);
-		this.matPeliErabNormalizatua = NormalizazioKalkulua.getNormalizazioKalkulua().matrizeaNormalizatu(matPeliErab);
+		this.matPeliErabNormalizatua = matPeliErabNormalizatu();
 	}
 
 	public static synchronized BalorazioenMatrizea getBalorazioenMatrizea() {
@@ -61,6 +65,7 @@ public class BalorazioenMatrizea {
 					int oraingoErabiltzailea = oraingoBalorazioa.getErabiltzaileId(u);
 					if(!erabItzultzailea.containsKey(oraingoErabiltzailea)) {
 						this.erabItzultzailea.put(oraingoErabiltzailea, kontErab);
+						this.erabItzultzaileaAlderantziz.put(kontErab, oraingoErabiltzailea);
 						kontErab ++;
 					}
 					this.matErabPeli[erabItzultzailea.get(oraingoErabiltzailea)].gehituElementua(oraingoPelikula.getPelikulaId(), nota);
@@ -68,6 +73,16 @@ public class BalorazioenMatrizea {
 				}
 			}
 		}
+	}
+	
+	private Bektorea[] matPeliErabNormalizatu() {
+		for(int i=0 ; i<matErabPeliNormalizatua.length; i++) {
+			Bektorea unekoBek = matErabPeliNormalizatua[i];
+			for (int j=0; j<unekoBek.luzera(); j++) {
+				matPeliErabNormalizatua[peliItzultzailea.get(unekoBek.getElementuarenIdErreala(j))].gehituElementua(erabItzultzaileaAlderantziz.get(i), unekoBek.getPosiziokoBalioa(j));
+			}
+		}
+		return matPeliErabNormalizatua;
 	}
 
 	private int pelikularenPosizioa(int pMovId) {
