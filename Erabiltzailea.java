@@ -1,5 +1,6 @@
 package Proiektua;
 
+import Interfaze.Login;
 import Salbuespenak.PelikulaEzDaExistitzenException;
 
 public class Erabiltzailea {
@@ -7,10 +8,12 @@ public class Erabiltzailea {
 	//Atributuak
 	private PelikulaZerrenda ikusitakoPelikulak;
 	private int idUser;
+	private int pasahitza;
 	
 	//Metodoak
-	public Erabiltzailea(int id){
+	public Erabiltzailea(int id, int ph){
 		this.idUser = id;
+		this.pasahitza = ph;
 		ikusitakoPelikulak = new PelikulaZerrenda();
 	}
 
@@ -32,6 +35,10 @@ public class Erabiltzailea {
 	
 	public boolean pasahitzZuzena(int pPasahitza) {
 		return this.pasahitza==pPasahitza;
+	}
+	
+	public void pasahitzaBete() {
+		Login.getLogin().setPasahitza(Integer.toString(pasahitza));
 	}
 
 }
