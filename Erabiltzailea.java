@@ -3,7 +3,6 @@ package Proiektua;
 import java.util.ArrayList;
 
 import Interfaze.Login;
-import Salbuespenak.PelikulaEzDaExistitzenException;
 
 public class Erabiltzailea {
 

@@ -3,10 +3,6 @@ package Proiektua;
 import java.util.ArrayList;
 import java.util.HashMap;
 
-import Salbuespenak.ErabiltzaileaEzDaExistitzenException;
-import Salbuespenak.KargaMotaEzDaExistitzenException;
-import Salbuespenak.PelikulaEzDaExistitzenException;
-
 public class BalorazioenMatrizea {
 	
 	private static BalorazioenMatrizea nBalorazioenMatrizea;
@@ -133,14 +129,6 @@ public class BalorazioenMatrizea {
 
 	public double getBalorazioa(int idUser, int idMovie) {		
 		return matErabPeli[erabItzultzailea.get(idUser)].getBalioa(idMovie);
-	}
-	
-	public static void main(String[] args) throws ErabiltzaileaEzDaExistitzenException, PelikulaEzDaExistitzenException, KargaMotaEzDaExistitzenException {
-		GomendioSistema.getGomendioSistema().datuakKargatu();
-		Bektorea bek = BalorazioenMatrizea.getBalorazioenMatrizea().getErabBalorazioNormalizatuak(17);
-		for(int i=0; i<bek.luzera(); i++) {
-			System.out.println(bek.getPosiziokoBalioa(i));
-		}
 	}
 	
 }

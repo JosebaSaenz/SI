@@ -2,7 +2,6 @@ package Proiektua;
 
 import java.io.InputStream;
 import java.io.InputStreamReader;
-import java.util.ArrayList;
 import java.util.Scanner;
 
 import Salbuespenak.ErabiltzaileaEzDaExistitzenException;
@@ -14,7 +13,7 @@ public class CSVKargaProba extends DatuenKarga {
 		super();
 	}
 	
-	public void datuakKargatu() throws ErabiltzaileaEzDaExistitzenException, PelikulaEzDaExistitzenException {
+	public void datuakKargatu() {
 		pelikulakIrakurri();
 		balorazioakIrakurri();
 		komentarioakIrakurri();
@@ -42,7 +41,7 @@ public class CSVKargaProba extends DatuenKarga {
 		
 	}
 	
-	private void balorazioakIrakurri() throws ErabiltzaileaEzDaExistitzenException, PelikulaEzDaExistitzenException {
+	private void balorazioakIrakurri() {
 		String helbidea = "FitxategiakProbak/ratings-proba.csv";
 		try {
 			InputStream fitx = this.getClass().getClassLoader().getResourceAsStream(helbidea);
@@ -56,19 +55,24 @@ public class CSVKargaProba extends DatuenKarga {
 				int idMovie = Integer.parseInt(zatiak[1]);
 				double rating = Double.parseDouble(zatiak[2]);
 				Erabiltzailea erab = null;
-				if (!GomendioSistema.getGomendioSistema().erregistratutaDago(idUser)) {
-					/* erabiltzailea oraindik ez badago erregistratuta, sortzen da eta zerrendara gehitzen da */
-					erab = new Erabiltzailea(idUser);
-					GomendioSistema.getGomendioSistema().gehituErabiltzailea(idUser, erab);
+				try {
+					if (!GomendioSistema.getGomendioSistema().erregistratutaDago(idUser)) {
+						/* erabiltzailea oraindik ez badago erregistratuta, sortzen da eta zerrendara gehitzen da */
+						erab = new Erabiltzailea(idUser);
+						GomendioSistema.getGomendioSistema().gehituErabiltzailea(idUser, erab);
+					}
+					else {
+						/* erabiltzailea jadanik erregistratuta badago, eskuratzen dugu, ondorengo ariketak egiteko */
+						erab = GomendioSistema.getGomendioSistema().getErabiltzailea(idUser);
+					}
+					Pelikula p = PelikulaKatalogo.getPelikulaKatalogo().getPelikula(idMovie);		// balorazioari dagokio pelikula eskuratzen da,aurreko metodoan katalogoan sartzen dira
+					p.balorazioaGehitu(idUser, rating);		//  pelikulari dagokion balorazioan erabiltzailearen id-a gehitu
+					erab.pelikulaGehitu(idMovie, p);		// dagokion erabiltzaileari baloratutako pelikula gehitzen diogu
+				} catch (PelikulaEzDaExistitzenException e) {
+					e.mezua(idMovie);
+				} catch (ErabiltzaileaEzDaExistitzenException e) {
+					e.mezua(idUser);
 				}
-				else {
-					/* erabiltzailea jadanik erregistratuta badago, eskuratzen dugu, ondorengo ariketak egiteko */
-					erab = GomendioSistema.getGomendioSistema().getErabiltzailea(idUser);
-				}
-				Pelikula p = PelikulaKatalogo.getPelikulaKatalogo().getPelikula(idMovie);		// balorazioari dagokio pelikula eskuratzen da,aurreko metodoan katalogoan sartzen dira
-				p.balorazioaGehitu(idUser, rating);		//  pelikulari dagokion balorazioan erabiltzailearen id-a gehitu
-				erab.pelikulaGehitu(idMovie, p);		// dagokion erabiltzaileari baloratutako pelikula gehitzen diogu
-				
 			}
 			sc.close();
 		}catch(NullPointerException e){
@@ -77,7 +81,7 @@ public class CSVKargaProba extends DatuenKarga {
 		
 	}
 	
-	private void komentarioakIrakurri() throws ErabiltzaileaEzDaExistitzenException, PelikulaEzDaExistitzenException {
+	private void komentarioakIrakurri() {
 		String helbidea = "FitxategiakProbak/tags-proba.csv";
 		try {
 			InputStream fitx = this.getClass().getClassLoader().getResourceAsStream(helbidea);
@@ -98,8 +102,12 @@ public class CSVKargaProba extends DatuenKarga {
 					GomendioSistema.getGomendioSistema().komentarioaGorde(tag,tagId);			// komentarioari ID berria ezartzen diogu
 					tagIdKont ++;
 				}
-				Pelikula p = PelikulaKatalogo.getPelikulaKatalogo().getPelikula(idMovie);		// komentarioari dagokio pelikula eskuratzen da
-				p.komentarioaErabiltzaileaGabeGehitu(tag, tagId);			//  pelikulari komentarioa gehitzen zaio
+				try {
+					Pelikula p = PelikulaKatalogo.getPelikulaKatalogo().getPelikula(idMovie);		// komentarioari dagokio pelikula eskuratzen da
+					p.komentarioaErabiltzaileaGabeGehitu(tag, tagId);			//  pelikulari komentarioa gehitzen zaio
+				} catch (PelikulaEzDaExistitzenException e) {
+					e.mezua(idMovie);
+				}
 			}
 			sc.close();
 		}catch(NullPointerException e){

@@ -2,11 +2,6 @@ package Proiektua;
 
 import java.util.ArrayList;
 
-import Interfaze.Lehio_Nagusia;
-import Salbuespenak.ErabiltzaileaEzDaExistitzenException;
-import Salbuespenak.KargaMotaEzDaExistitzenException;
-import Salbuespenak.PelikulaEzDaExistitzenException;
-
 public class ErabiltzaileIragaztea {
 	
 	public ErabiltzaileIragaztea() {}
@@ -46,12 +41,6 @@ public class ErabiltzaileIragaztea {
 			}
 		}
 		return emaitza;
-	}
-	
-	public static void main(String[] args) throws ErabiltzaileaEzDaExistitzenException, PelikulaEzDaExistitzenException, KargaMotaEzDaExistitzenException {
-		GomendioSistema.getGomendioSistema().datuakKargatu();
-		ErabiltzaileIragaztea ei = new ErabiltzaileIragaztea();
-		System.out.println(ei.balorazioEstimazioa(1, 1));
 	}
 	
 }

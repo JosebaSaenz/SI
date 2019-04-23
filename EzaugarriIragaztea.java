@@ -1,10 +1,5 @@
 package Proiektua;
 
-import java.util.ArrayList;
-
-import Salbuespenak.ErabiltzaileaEzDaExistitzenException;
-import Salbuespenak.KargaMotaEzDaExistitzenException;
-import Salbuespenak.PelikulaEzDaExistitzenException;
 
 public class EzaugarriIragaztea {
 
@@ -35,12 +30,6 @@ public class EzaugarriIragaztea {
 	
 	private double notaAjustatu(double nota) {
 		return (nota+1)*2.5;
-	}
-
-	public static void main(String[] args) throws ErabiltzaileaEzDaExistitzenException, PelikulaEzDaExistitzenException, KargaMotaEzDaExistitzenException {
-		GomendioSistema.getGomendioSistema().datuakKargatu();
-		EzaugarriIragaztea ei = new EzaugarriIragaztea();
-		System.out.println(ei.balorazioEstimazioa(1, 1));
 	}
 	
 }

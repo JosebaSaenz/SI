@@ -3,7 +3,6 @@ package Proiektua;
 import java.util.ArrayList;
 
 import Salbuespenak.ErabiltzaileaEzDaExistitzenException;
-import Salbuespenak.KargaMotaEzDaExistitzenException;
 import Salbuespenak.PelikulaEzDaExistitzenException;
 
 public class IragazteSistema {
@@ -39,30 +38,30 @@ public class IragazteSistema {
 	
 	public double erabiltzaileaBalorazioaEstimazioa(int idUser, int idMovie) throws ErabiltzaileaEzDaExistitzenException, PelikulaEzDaExistitzenException {
 		if (!GomendioSistema.getGomendioSistema().erregistratutaDago(idUser)) {
-			throw new ErabiltzaileaEzDaExistitzenException(idUser);
+			throw new ErabiltzaileaEzDaExistitzenException();
 		}
 		else if(!PelikulaKatalogo.getPelikulaKatalogo().erregistratutaDago(idMovie)) {
-			throw new PelikulaEzDaExistitzenException(idMovie);
+			throw new PelikulaEzDaExistitzenException();
 		}
 		return erab.balorazioEstimazioa(idUser, idMovie);
 	}
 	
 	public double produktuaBalorazioaEstimazioa(int idUser, int idMovie) throws ErabiltzaileaEzDaExistitzenException, PelikulaEzDaExistitzenException {
 		if (!GomendioSistema.getGomendioSistema().erregistratutaDago(idUser)) {
-			throw new ErabiltzaileaEzDaExistitzenException(idUser);
+			throw new ErabiltzaileaEzDaExistitzenException();
 		}
 		else if(!PelikulaKatalogo.getPelikulaKatalogo().erregistratutaDago(idMovie)) {
-			throw new PelikulaEzDaExistitzenException(idMovie);
+			throw new PelikulaEzDaExistitzenException();
 		}
 		return produk.balorazioEstimazioa(idUser,idMovie);
 	}
 	
 	public double ezaugarriaBalorazioaEstimazioa(int idUser, int idMovie) throws ErabiltzaileaEzDaExistitzenException, PelikulaEzDaExistitzenException {
 		if (!GomendioSistema.getGomendioSistema().erregistratutaDago(idUser)) {
-			throw new ErabiltzaileaEzDaExistitzenException(idUser);
+			throw new ErabiltzaileaEzDaExistitzenException();
 		}
 		else if(!PelikulaKatalogo.getPelikulaKatalogo().erregistratutaDago(idMovie)) {
-			throw new PelikulaEzDaExistitzenException(idMovie);
+			throw new PelikulaEzDaExistitzenException();
 		}
 		return ezau.balorazioEstimazioa(idUser, idMovie);
 	}
@@ -96,11 +95,4 @@ public class IragazteSistema {
 		return (0.5*erab)+(ezaug*0.25)+(produk*0.25);
 	}
 	
-	public static void main(String[] args) throws ErabiltzaileaEzDaExistitzenException, PelikulaEzDaExistitzenException, KargaMotaEzDaExistitzenException {
-		GomendioSistema.getGomendioSistema().datuakKargatu();
-		ArrayList<String> zer = IragazteSistema.getIragazteSistema().gomendatu(550);
-		for(int i=0; i<zer.size(); i++) {
-			System.out.println(zer.get(i));
-		}
-	}
 }

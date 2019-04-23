@@ -30,7 +30,7 @@ public class KargaFactory {
 			//nireDatuenKarga = new DatuBaseKarga();
 		}
 		else {
-			throw new KargaMotaEzDaExistitzenException(kargaMota);
+			throw new KargaMotaEzDaExistitzenException();
 		}
 		return nireDatuenKarga;
 	}

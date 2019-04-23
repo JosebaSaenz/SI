@@ -3,8 +3,6 @@ package Proiektua;
 import java.util.ArrayList;
 import java.util.HashMap;
 
-import Salbuespenak.ErabiltzaileaEzDaExistitzenException;
-import Salbuespenak.KargaMotaEzDaExistitzenException;
 import Salbuespenak.PelikulaEzDaExistitzenException;
 
 public class PelikulaKatalogo {
@@ -34,7 +32,7 @@ public class PelikulaKatalogo {
 	public Pelikula getPelikula(int idMovie) throws PelikulaEzDaExistitzenException {
 		Pelikula p = zerrenda.getPelikula(idMovie);
 		if(p == null) {
-			throw new PelikulaEzDaExistitzenException(idMovie);
+			throw new PelikulaEzDaExistitzenException();
 		}
 		return zerrenda.getPelikula(idMovie);
 	}
@@ -73,19 +71,10 @@ public class PelikulaKatalogo {
 			try {
 				izenak.add(this.getPelikula(tuplak[i].getId()).getTitulua());
 			} catch (PelikulaEzDaExistitzenException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
+				e.mezua(tuplak[i].getId());
 			}
 		}
 		return izenak;
-	}
-	
-	public static void main(String[] args) throws ErabiltzaileaEzDaExistitzenException, PelikulaEzDaExistitzenException, KargaMotaEzDaExistitzenException {
-		GomendioSistema.getGomendioSistema().datuakKargatu();
-		ArrayList<Tag> zer = PelikulaKatalogo.getPelikulaKatalogo().getPelikula(1).komentarioak();
-		for(int i=0; i<zer.size(); i++) {
-			System.out.println(zer.get(i).getKomentarioa() + "   " + zer.get(i).zenbatAldiz());
-		}
 	}
 	
 }

@@ -2,10 +2,6 @@ package Proiektua;
 
 import java.util.ArrayList;
 
-import Salbuespenak.ErabiltzaileaEzDaExistitzenException;
-import Salbuespenak.KargaMotaEzDaExistitzenException;
-import Salbuespenak.PelikulaEzDaExistitzenException;
-
 public class ProduktuIragaztea {
 	
 	public ProduktuIragaztea() {}
@@ -47,16 +43,6 @@ public class ProduktuIragaztea {
 			}
 		}
 		return antzekoenak;
-	}
-	
-	public static void main(String[] args) throws ErabiltzaileaEzDaExistitzenException, PelikulaEzDaExistitzenException, KargaMotaEzDaExistitzenException {
-		GomendioSistema.getGomendioSistema().datuakKargatu();
-		ProduktuIragaztea pi = new ProduktuIragaztea();
-		Tupla[] zer = pi.antzekoPeliLortu(2048, 161);
-		for(int i = 0; i<zer.length; i++) {
-			System.out.println(zer[i].getId());
-		}
-			
 	}
 	
 }

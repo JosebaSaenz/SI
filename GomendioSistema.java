@@ -2,10 +2,8 @@ package Proiektua;
 import java.util.ArrayList;
 import java.util.HashMap;
 
-import Interfaze.Lehio_Nagusia;
 import Salbuespenak.ErabiltzaileaEzDaExistitzenException;
 import Salbuespenak.KargaMotaEzDaExistitzenException;
-import Salbuespenak.PelikulaEzDaExistitzenException;
 
 public class GomendioSistema {
 
@@ -27,9 +25,14 @@ public class GomendioSistema {
 		return nGomendioSistema;
 	}
 	
-	public void datuakKargatu() throws ErabiltzaileaEzDaExistitzenException, PelikulaEzDaExistitzenException, KargaMotaEzDaExistitzenException {
-		DatuenKarga nireDatuenKarga = KargaFactory.getKargaFactory().createKarga(".csv proba");
-		nireDatuenKarga.datuakKargatu();
+	public void datuakKargatu() {
+		String kargaMota = ".csv mota2";
+		try {
+			DatuenKarga nireDatuenKarga = KargaFactory.getKargaFactory().createKarga(kargaMota);
+			nireDatuenKarga.datuakKargatu();
+		} catch (KargaMotaEzDaExistitzenException e) {
+			e.mezua(kargaMota);
+		}
 	}
 	
 	public void gehituErabiltzailea(Integer id, Erabiltzailea e) {
@@ -43,20 +46,25 @@ public class GomendioSistema {
 		return erabiltzaileak.containsKey(idUser);
 	}
 	
-	public Erabiltzailea getErabiltzailea(int idUser) throws ErabiltzaileaEzDaExistitzenException  {
+	public Erabiltzailea getErabiltzailea(int idUser) throws ErabiltzaileaEzDaExistitzenException {
 		Erabiltzailea erab = erabiltzaileak.get(idUser);
 		if(erab == null) {
-			throw new ErabiltzaileaEzDaExistitzenException(idUser);
+			throw new ErabiltzaileaEzDaExistitzenException();
 		}
 		return erab;
 	}
 	
-	public ArrayList<String> erabiltzaileakEskuratu() throws ErabiltzaileaEzDaExistitzenException{
+	public ArrayList<String> erabiltzaileakEskuratu() {
 		ArrayList<String> idUser = new ArrayList<String>();
 		for(int i=0; i<erabiltzaileak.size(); i++) {
 			Integer erab = erabiltzaileak.get(idErabiltzaileak.get(i)).getId();
-			int pelikulaKop = GomendioSistema.getGomendioSistema().getErabiltzailea(erab).ikusitakoPelikulaKop();
-			idUser.add("'" + erab.toString() + "' erabiltzaileak " + pelikulaKop + " pelikula ikusi ditu.");
+			int pelikulaKop;
+			try {
+				pelikulaKop = GomendioSistema.getGomendioSistema().getErabiltzailea(erab).ikusitakoPelikulaKop();
+				idUser.add("'" + erab.toString() + "' erabiltzaileak " + pelikulaKop + " pelikula ikusi ditu.");
+			} catch (ErabiltzaileaEzDaExistitzenException e) {
+				e.mezua(erab);
+			}
 		}
 		return idUser;
 	}
@@ -89,13 +97,15 @@ public class GomendioSistema {
 		tagIDak.put(pTag, pTagId);
 	}
 
-	public ArrayList<String> ikusitakoPelikulakLortu(int idUser) throws ErabiltzaileaEzDaExistitzenException {
-		Erabiltzailea erab = this.getErabiltzailea(idUser);
-		return erab.ikusitakoPelikulakLortu();
-	}
-	
-	public static void main(String[] args) throws ErabiltzaileaEzDaExistitzenException, PelikulaEzDaExistitzenException, KargaMotaEzDaExistitzenException {
-
+	public ArrayList<String> ikusitakoPelikulakLortu(int idUser) {
+		ArrayList<String> emaitza = new ArrayList<String>();
+		try {
+			Erabiltzailea erab = this.getErabiltzailea(idUser);
+			emaitza = erab.ikusitakoPelikulakLortu();
+		} catch(ErabiltzaileaEzDaExistitzenException e) {
+			e.mezua(idUser);
+		}
+		return emaitza;
 	}
 
 }
