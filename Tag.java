@@ -7,15 +7,13 @@ public class Tag {
 
 	//Atributuak
 	private int idTag;
-	private int idMovie;
 	private ArrayList<Integer> idUser;
 	private String komentarioa;
 	private int zenbatAldiz;
 	
 	//Metodoak
-	public Tag(int idMovie, String k, int idTag) {
+	public Tag(String k, int idTag) {
 		this.idTag = idTag;
-		this.idMovie = idMovie;
 		this.komentarioa = k;
 		idUser = new ArrayList<Integer>();
 		zenbatAldiz = 1;

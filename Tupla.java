@@ -3,15 +3,15 @@ package Proiektua;
 public class Tupla {
 	
 	private int id;
-	private double antzekotasuna;
+	private double balioa;
 	
-	public Tupla(int pId, double pAntzekotasuna) {
+	public Tupla(int pId, double pBalioa) {
 		id = pId;
-		antzekotasuna = pAntzekotasuna;
+		balioa = pBalioa;
 	}
 
-	public double getAntzekotasuna() {
-		return antzekotasuna;
+	public double getBalioa() {
+		return balioa;
 	}
 
 	public int getId() {

@@ -1,5 +1,7 @@
 package Proiektua;
 
+import java.util.ArrayList;
+
 import Interfaze.Login;
 import Salbuespenak.PelikulaEzDaExistitzenException;
 
@@ -14,6 +16,11 @@ public class Erabiltzailea {
 	public Erabiltzailea(int id, int ph){
 		this.idUser = id;
 		this.pasahitza = ph;
+		ikusitakoPelikulak = new PelikulaZerrenda();
+	}
+	
+	public Erabiltzailea(int id){
+		this.idUser = id;
 		ikusitakoPelikulak = new PelikulaZerrenda();
 	}
 
@@ -39,6 +46,10 @@ public class Erabiltzailea {
 	
 	public void pasahitzaBete() {
 		Login.getLogin().setPasahitza(Integer.toString(pasahitza));
+	}
+
+	public ArrayList<String> ikusitakoPelikulakLortu() {
+		return ikusitakoPelikulak.tituluakEtaBalorazioakLortu(idUser);
 	}
 
 }

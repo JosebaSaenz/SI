@@ -37,7 +37,6 @@ public class EzaugarriIragaztea {
 		return (nota+1)*2.5;
 	}
 
-
 	public static void main(String[] args) throws ErabiltzaileaEzDaExistitzenException, PelikulaEzDaExistitzenException, KargaMotaEzDaExistitzenException {
 		GomendioSistema.getGomendioSistema().datuakKargatu();
 		EzaugarriIragaztea ei = new EzaugarriIragaztea();

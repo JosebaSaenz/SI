@@ -25,7 +25,7 @@ public class IragazteSistema {
 		return nIragazteSistema;
 	}
 	
-	public ArrayList<String> gomendatu(int idUser){  
+	public ArrayList<String> gomendatu(int idUser) {  
 		ArrayList<String> gomendioak = new ArrayList<String>();
 		Tupla[] balorazioak = this.estimazioak(idUser);
 		TuplaOrdenazioa.getTuplaAntzekOrdenazioa().handTxikOrdenatu(balorazioak);
@@ -67,7 +67,7 @@ public class IragazteSistema {
 		return ezau.balorazioEstimazioa(idUser, idMovie);
 	}
 	
-	private Tupla[] estimazioak(int idUser){
+	private Tupla[] estimazioak(int idUser) {
 		ArrayList<Integer> pelikulenIdak = new ArrayList<Integer>();
 		pelikulenIdak = PelikulaKatalogo.getPelikulaKatalogo().idGuztiak();
 		Erabiltzailea erabiltzailea = null;
@@ -98,7 +98,7 @@ public class IragazteSistema {
 	
 	public static void main(String[] args) throws ErabiltzaileaEzDaExistitzenException, PelikulaEzDaExistitzenException, KargaMotaEzDaExistitzenException {
 		GomendioSistema.getGomendioSistema().datuakKargatu();
-		ArrayList<String> zer = IragazteSistema.getIragazteSistema().gomendatu(555);
+		ArrayList<String> zer = IragazteSistema.getIragazteSistema().gomendatu(550);
 		for(int i=0; i<zer.size(); i++) {
 			System.out.println(zer.get(i));
 		}

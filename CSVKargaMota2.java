@@ -3,7 +3,6 @@ package Proiektua;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.util.ArrayList;
-import java.util.Random;
 import java.util.Scanner;
 
 import Salbuespenak.ErabiltzaileaEzDaExistitzenException;
@@ -22,8 +21,7 @@ public class CSVKargaMota2 extends DatuenKarga {
 	}
 	
 	private void pelikulakIrakurri() {
-		String helbidea = "Fitxategiak/movie-titles.csv";
-		//String helbidea = "FitxategiakProbak/titles-proba.csv";
+		String helbidea = "Fitxategiak/movietitles.csv";
 		try {
 			InputStream fitx = this.getClass().getClassLoader().getResourceAsStream(helbidea);
 			InputStreamReader in= new InputStreamReader(fitx);
@@ -45,8 +43,7 @@ public class CSVKargaMota2 extends DatuenKarga {
 	}
 	
 	private void balorazioakIrakurri() throws ErabiltzaileaEzDaExistitzenException, PelikulaEzDaExistitzenException {
-		String helbidea = "Fitxategiak/movie-ratings.csv";
-		//String helbidea = "FitxategiakProbak/ratings-proba.csv";
+		String helbidea = "Fitxategiak/movieratings.csv";
 		try {
 			InputStream fitx = this.getClass().getClassLoader().getResourceAsStream(helbidea);
 			InputStreamReader in= new InputStreamReader(fitx);
@@ -61,8 +58,7 @@ public class CSVKargaMota2 extends DatuenKarga {
 				Erabiltzailea erab = null;
 				if (!GomendioSistema.getGomendioSistema().erregistratutaDago(idUser)) {
 					/* erabiltzailea oraindik ez badago erregistratuta, sortzen da eta zerrendara gehitzen da */
-					Random pasahitza = new Random();
-					erab = new Erabiltzailea(idUser,pasahitza.nextInt(99999999));
+					erab = new Erabiltzailea(idUser);
 					GomendioSistema.getGomendioSistema().gehituErabiltzailea(idUser, erab);
 				}
 				else {
@@ -82,8 +78,7 @@ public class CSVKargaMota2 extends DatuenKarga {
 	}
 	
 	private void komentarioakIrakurri() throws ErabiltzaileaEzDaExistitzenException, PelikulaEzDaExistitzenException {
-		String helbidea = "Fitxategiak/movie-tags.csv";
-		//String helbidea = "FitxategiakProbak/tags-proba.csv";
+		String helbidea = "Fitxategiak/movietags.csv";
 		try {
 			InputStream fitx = this.getClass().getClassLoader().getResourceAsStream(helbidea);
 			InputStreamReader in= new InputStreamReader(fitx);

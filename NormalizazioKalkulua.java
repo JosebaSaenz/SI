@@ -6,7 +6,7 @@ public class NormalizazioKalkulua {
 	private Normalizazioa normalizazioMota;
 	
 	private NormalizazioKalkulua() {
-		normalizazioMota = new Batezbestekoa();	// Z-Score normalizazio era erabiltzen dugu
+		normalizazioMota = new Batezbestekoa();
 	}
 	
 	public static synchronized NormalizazioKalkulua getNormalizazioKalkulua() {

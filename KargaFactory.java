@@ -23,6 +23,9 @@ public class KargaFactory {
 		else if(kargaMota.equals(".csv mota2")) {
 			nireDatuenKarga = new CSVKargaMota2();
 		}
+		else if(kargaMota.equals(".csv proba")) {
+			nireDatuenKarga = new CSVKargaProba();
+		}
 		else if(kargaMota.equals("datu basea")) {
 			//nireDatuenKarga = new DatuBaseKarga();
 		}

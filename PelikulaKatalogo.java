@@ -66,6 +66,7 @@ public class PelikulaKatalogo {
 	public ArrayList<Integer> idGuztiak(){
 		return this.zerrenda.idGuztiak();
 	}
+	
 	public ArrayList<String> tuplatikIzenakLortu(Tupla[] tuplak){
 		ArrayList<String> izenak = new ArrayList<String>();
 		for (int i = 0; i<tuplak.length;i++) {
@@ -78,6 +79,7 @@ public class PelikulaKatalogo {
 		}
 		return izenak;
 	}
+	
 	public static void main(String[] args) throws ErabiltzaileaEzDaExistitzenException, PelikulaEzDaExistitzenException, KargaMotaEzDaExistitzenException {
 		GomendioSistema.getGomendioSistema().datuakKargatu();
 		ArrayList<Tag> zer = PelikulaKatalogo.getPelikulaKatalogo().getPelikula(1).komentarioak();

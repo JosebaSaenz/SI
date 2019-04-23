@@ -28,7 +28,7 @@ public class GomendioSistema {
 	}
 	
 	public void datuakKargatu() throws ErabiltzaileaEzDaExistitzenException, PelikulaEzDaExistitzenException, KargaMotaEzDaExistitzenException {
-		DatuenKarga nireDatuenKarga = KargaFactory.getKargaFactory().createKarga(".csv mota2");
+		DatuenKarga nireDatuenKarga = KargaFactory.getKargaFactory().createKarga(".csv proba");
 		nireDatuenKarga.datuakKargatu();
 	}
 	
@@ -87,6 +87,11 @@ public class GomendioSistema {
 	
 	public void komentarioaGorde(String pTag, int pTagId) {
 		tagIDak.put(pTag, pTagId);
+	}
+
+	public ArrayList<String> ikusitakoPelikulakLortu(int idUser) throws ErabiltzaileaEzDaExistitzenException {
+		Erabiltzailea erab = this.getErabiltzailea(idUser);
+		return erab.ikusitakoPelikulakLortu();
 	}
 	
 	public static void main(String[] args) throws ErabiltzaileaEzDaExistitzenException, PelikulaEzDaExistitzenException, KargaMotaEzDaExistitzenException {

@@ -67,4 +67,15 @@ public class PelikulaZerrenda {
 	public ArrayList<Integer> idGuztiak(){
 		return this.idPelikulak;
 	}
+
+	public ArrayList<String> tituluakEtaBalorazioakLortu(int idUser) {
+		ArrayList<String> emaitza = new ArrayList<String>();
+		for(int i=0; i<zerrenda.size(); i++) {
+			String unekoTitulua = zerrenda.get(idPelikulak.get(i)).getTitulua();
+			double unekoBalorazioaLag = zerrenda.get(idPelikulak.get(i)).erabiltzaileBalorazioa(idUser);
+			String unekoBalorazioa = Double.toString(unekoBalorazioaLag);
+			emaitza.add("Titulua: " + unekoTitulua + "; Balorazioa: " + unekoBalorazioa);
+		}
+		return emaitza;
+	}
 }

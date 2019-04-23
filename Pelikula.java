@@ -45,7 +45,7 @@ public class Pelikula {
 	public void komentarioaGehitu(int idUser, String k, int idTag){
 		Tag komentarioa = bilatuKomentarioa(k);
 		if(komentarioa == null) {
-			komentarioa = new Tag(idMovie, k, idTag);
+			komentarioa = new Tag(k, idTag);
 			this.komentarioak.add(komentarioa);
 		}
 		else {
@@ -57,7 +57,7 @@ public class Pelikula {
 	public void komentarioaErabiltzaileaGabeGehitu(String tag, int idTag) {
 		Tag komentarioa = bilatuKomentarioa(tag);
 		if(komentarioa == null) {
-			komentarioa = new Tag(idMovie, tag, idTag);
+			komentarioa = new Tag(tag, idTag);
 			this.komentarioak.add(komentarioa);
 		}
 		else {
@@ -140,6 +140,20 @@ public class Pelikula {
 	
 	public ArrayList<Tag> komentarioak() {
 		return komentarioak;
+	}
+
+	public double erabiltzaileBalorazioa(int idUser) {
+		double emaitza = 0;
+		boolean topatuta = false;
+		int i = 0;
+		while(i<balorazioak.length && !topatuta) {
+			if (balorazioak[i].baloratuDu(idUser)) {
+				topatuta = true;
+				emaitza = (double)i/2;
+			}
+			i++;
+		}
+		return emaitza;
 	}
 	
 }

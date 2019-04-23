@@ -4,11 +4,11 @@ public class MergeSort implements OrdenazioAlgoritmoa {
 
 	public MergeSort() {}
 
-	public void handTxikOrdenatu(TuplaAntzekotasuna[] pZerrenda) {
+	public void handTxikOrdenatu(Tupla[] pZerrenda) {
 		mergeSort(pZerrenda, 0, pZerrenda.length-1);
 	}
 	
-	private void mergeSort(TuplaAntzekotasuna[] pZerrenda, int pHasiera, int pBukaera) {
+	private void mergeSort(Tupla[] pZerrenda, int pHasiera, int pBukaera) {
 		if(pHasiera < pBukaera) {
 			mergeSort(pZerrenda, pHasiera, (pHasiera + pBukaera) / 2);
 			mergeSort(pZerrenda, ((pHasiera + pBukaera) / 2) + 1, pBukaera);
@@ -16,13 +16,13 @@ public class MergeSort implements OrdenazioAlgoritmoa {
 		}
 	}
 	
-	private void bateratze(TuplaAntzekotasuna[] pZerrenda, int i, int erdikoa, int f) {
-		TuplaAntzekotasuna[] bateratua = new TuplaAntzekotasuna[f-i+1];
+	private void bateratze(Tupla[] pZerrenda, int i, int erdikoa, int f) {
+		Tupla[] bateratua = new Tupla[f-i+1];
 		int ezker = i;
 		int eskuin = erdikoa + 1;
 		int k = 0; 	// bateratua taula betetzeko indizea
 		while(ezker <= erdikoa && eskuin <= f) {
-			if(pZerrenda[ezker].getAntzekotasuna() >= pZerrenda[eskuin].getAntzekotasuna()) {
+			if(pZerrenda[ezker].getBalioa() >= pZerrenda[eskuin].getBalioa()) {
 				bateratua[k] = pZerrenda[ezker];
 				k ++;
 				ezker ++;
