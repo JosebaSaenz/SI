@@ -3,6 +3,7 @@ package Proiektua;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.util.ArrayList;
+import java.util.Random;
 import java.util.Scanner;
 
 import Salbuespenak.ErabiltzaileaEzDaExistitzenException;
@@ -66,7 +67,8 @@ public class CSVKargaMota1 extends DatuenKarga {
 				try {
 					if (!GomendioSistema.getGomendioSistema().erregistratutaDago(idUser)) {
 						/* erabiltzailea oraindik ez badago erregistratuta, sortzen da eta zerrendara gehitzen da */
-						erab = new Erabiltzailea(idUser);
+						Random pasahitza = new Random();
+						erab = new Erabiltzailea(idUser,pasahitza.nextInt(99999999));
 						GomendioSistema.getGomendioSistema().gehituErabiltzailea(idUser, erab);	
 					}
 					else {
@@ -108,7 +110,8 @@ public class CSVKargaMota1 extends DatuenKarga {
 				try {
 					if (!GomendioSistema.getGomendioSistema().erregistratutaDago(idUser)) {
 						//erabiltzailea oraindik ez badago erregistratuta, sortzen da eta zerrendara gehitzen da
-						erab = new Erabiltzailea(idUser);
+						Random pasahitza = new Random();
+						erab = new Erabiltzailea(idUser,pasahitza.nextInt(99999999));
 						GomendioSistema.getGomendioSistema().gehituErabiltzailea(idUser, erab);
 					}
 					else {
