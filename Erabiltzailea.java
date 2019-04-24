@@ -3,6 +3,7 @@ package Proiektua;
 import java.util.ArrayList;
 
 import Interfaze.Login;
+import Interfaze.MVC;
 
 public class Erabiltzailea {
 
@@ -44,7 +45,7 @@ public class Erabiltzailea {
 	}
 	
 	public void pasahitzaBete() {
-		Login.getLogin().setPasahitza(Integer.toString(pasahitza));
+		MVC.getMVC().setPasahitza(Integer.toString(pasahitza));
 	}
 
 	public ArrayList<String> ikusitakoPelikulakLortu() {

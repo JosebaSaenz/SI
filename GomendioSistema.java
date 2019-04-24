@@ -54,21 +54,6 @@ public class GomendioSistema {
 		return erab;
 	}
 	
-	public ArrayList<String> erabiltzaileakEskuratu() {
-		ArrayList<String> idUser = new ArrayList<String>();
-		for(int i=0; i<erabiltzaileak.size(); i++) {
-			Integer erab = erabiltzaileak.get(idErabiltzaileak.get(i)).getId();
-			int pelikulaKop;
-			try {
-				pelikulaKop = GomendioSistema.getGomendioSistema().getErabiltzailea(erab).ikusitakoPelikulaKop();
-				idUser.add("'" + erab.toString() + "' erabiltzaileak " + pelikulaKop + " pelikula ikusi ditu.");
-			} catch (ErabiltzaileaEzDaExistitzenException e) {
-				e.mezua(erab);
-			}
-		}
-		return idUser;
-	}
-	
 	public void datuakEzabatu() {
 		erabiltzaileak.clear();
 	}
