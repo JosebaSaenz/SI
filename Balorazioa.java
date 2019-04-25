@@ -33,6 +33,6 @@ public class Balorazioa {
 		return idUser.get(pPos);
 	}
 	
-	//ni caso a esto//
+	//hola//
 
 }
