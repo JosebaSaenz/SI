@@ -34,4 +34,3 @@ public class DialogZenbakiBatSartuBeharDa extends JDialog {
 	}
 
 }
-
