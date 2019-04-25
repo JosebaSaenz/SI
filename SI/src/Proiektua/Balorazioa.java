@@ -32,5 +32,6 @@ public class Balorazioa {
 	public int getErabiltzaileId(int pPos) {
 		return idUser.get(pPos);
 	}
+	//a ver
 
 }
