@@ -15,6 +15,10 @@ import java.awt.Font;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import java.awt.Toolkit;
+import javax.swing.border.TitledBorder;
+import javax.swing.JTabbedPane;
+import javax.swing.JSplitPane;
+import javax.swing.JScrollPane;
 
 public class Hasierako_Lehioa extends JFrame {
 
@@ -47,16 +51,10 @@ public class Hasierako_Lehioa extends JFrame {
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
-		
-		JPanel panel = new JPanel();
-		panel.setBackground(Color.BLACK);
-		panel.setBounds(178, 168, 563, 189);
 		ImageIcon logoIcon = new ImageIcon("src/Fitxategiak/logo.png");
 		Image logoIrudi = logoIcon.getImage();
 		logoIrudi = logoIrudi.getScaledInstance(560, 185, Image.SCALE_DEFAULT);
 		logoIcon = new ImageIcon(logoIrudi);
-		panel.add(new JLabel(logoIcon));
-		contentPane.add(panel);
 		
 		JButton btnLogin = new JButton("Login");
 		btnLogin.addActionListener(new ActionListener() {
@@ -65,7 +63,7 @@ public class Hasierako_Lehioa extends JFrame {
 				Login.getLogin().setVisible(true);
 			}
 		});
-		btnLogin.setForeground(Color.WHITE);
+		btnLogin.setForeground(Color.RED);
 		btnLogin.setFont(new Font("Rockwell", Font.BOLD, 20));
 		btnLogin.setBackground(new Color(178, 34, 34));
 		btnLogin.setBounds(697, 52, 127, 38);
@@ -88,6 +86,12 @@ public class Hasierako_Lehioa extends JFrame {
 		aukerakButton.setBackground(Color.BLACK);
 		aukerakButton.setBounds(15, 500, 50, 50);
 		contentPane.add(aukerakButton);
+		
+		JLabel lblNewLabel = new JLabel("New label");
+		lblNewLabel.setBounds(-10, 52, 928, 350);
+		contentPane.add(lblNewLabel);
+		lblNewLabel.setBackground(Color.BLACK);
+		lblNewLabel.setIcon(new ImageIcon(Hasierako_Lehioa.class.getResource("/Fitxategiak/logo.png")));
 	}
 	
 	public static synchronized Hasierako_Lehioa getHL() {
