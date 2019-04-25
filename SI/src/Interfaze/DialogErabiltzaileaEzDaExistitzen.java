@@ -1,40 +1,42 @@
 package Interfaze;
 
-import java.awt.Dimension;
-import java.awt.Frame;
-import java.awt.Rectangle;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
+import java.awt.BorderLayout;
+import java.awt.EventQueue;
 
-import javax.swing.JButton;
-import javax.swing.JDialog;
-import javax.swing.JLabel;
+import javax.swing.JFrame;
+import javax.swing.JPanel;
+import javax.swing.border.EmptyBorder;
 
-public class DialogErabiltzaileaEzDaExistitzen extends JDialog {
-	
-	private JLabel jLabel1 = new JLabel();
-	private JButton jButton1 = new JButton();
-	private int idUser;
-	
-	public DialogErabiltzaileaEzDaExistitzen(int pIdUser) {
-		idUser = pIdUser;
-		this.setModal(true);
-		this.setLocation(500,300);
-		this.setSize(new Dimension(400,135));
-		this.getContentPane().setLayout(null);
-		jLabel1.setText("'" + idUser + "' erabiltzailea ez da existitzen.");
-		jLabel1.setBounds(new Rectangle(100,20,300,15));
-		jButton1.setText("Itxi");
-		jButton1.setBounds(new Rectangle(150,55,70,30));
-		this.getContentPane().add(jButton1,null);
-		this.getContentPane().add(jLabel1,null);
-		
-		jButton1.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				setVisible(false);
+public class DialogErabiltzaileaEzDaExistitzen extends JFrame {
+
+	private JPanel contentPane;
+
+	/**
+	 * Launch the application.
+	 */
+	public static void main(String[] args) {
+		EventQueue.invokeLater(new Runnable() {
+			public void run() {
+				try {
+					DialogErabiltzaileaEzDaExistitzen frame = new DialogErabiltzaileaEzDaExistitzen();
+					frame.setVisible(true);
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
 			}
 		});
 	}
 
-}
+	/**
+	 * Create the frame.
+	 */
+	public DialogErabiltzaileaEzDaExistitzen() {
+		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		setBounds(100, 100, 450, 300);
+		contentPane = new JPanel();
+		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
+		contentPane.setLayout(new BorderLayout(0, 0));
+		setContentPane(contentPane);
+	}
 
+}

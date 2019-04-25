@@ -26,7 +26,7 @@ public class GomendioSistema {
 	}
 	
 	public void datuakKargatu() {
-		String kargaMota = ".csv mota2";
+		String kargaMota = ".csv mota";
 		try {
 			DatuenKarga nireDatuenKarga = KargaFactory.getKargaFactory().createKarga(kargaMota);
 			nireDatuenKarga.datuakKargatu();
