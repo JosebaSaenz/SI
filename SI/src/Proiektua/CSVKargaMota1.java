@@ -22,7 +22,7 @@ public class CSVKargaMota1 extends DatuenKarga {
 	}
 	
 	private void pelikulakIrakurri() {
-		String helbidea = "Fitxategiak/movies.csv";
+		String helbidea = "Fitxategiak/movie-ratings.csv";
 		try {
 			InputStream fitx = this.getClass().getClassLoader().getResourceAsStream(helbidea);
 			InputStreamReader in= new InputStreamReader(fitx);

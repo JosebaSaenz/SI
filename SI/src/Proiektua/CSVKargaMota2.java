@@ -21,7 +21,7 @@ public class CSVKargaMota2 extends DatuenKarga {
 	}
 	
 	private void pelikulakIrakurri() {
-		String helbidea = "Fitxategiak/movietitles.csv";
+		String helbidea = "Fitxategiak/movie-titles.csv";
 		try {
 			InputStream fitx = this.getClass().getClassLoader().getResourceAsStream(helbidea);
 			InputStreamReader in= new InputStreamReader(fitx);
@@ -43,7 +43,7 @@ public class CSVKargaMota2 extends DatuenKarga {
 	}
 	
 	private void balorazioakIrakurri() {
-		String helbidea = "Fitxategiak/movieratings.csv";
+		String helbidea = "Fitxategiak/movie-ratings.csv";
 		try {
 			InputStream fitx = this.getClass().getClassLoader().getResourceAsStream(helbidea);
 			InputStreamReader in= new InputStreamReader(fitx);
@@ -84,7 +84,7 @@ public class CSVKargaMota2 extends DatuenKarga {
 	}
 	
 	private void komentarioakIrakurri() {
-		String helbidea = "Fitxategiak/movietags.csv";
+		String helbidea = "Fitxategiak/movie-tags.csv";
 		try {
 			InputStream fitx = this.getClass().getClassLoader().getResourceAsStream(helbidea);
 			InputStreamReader in= new InputStreamReader(fitx);
