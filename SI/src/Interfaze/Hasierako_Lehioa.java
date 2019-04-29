@@ -15,10 +15,9 @@ import java.awt.Font;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import java.awt.Toolkit;
-import javax.swing.border.TitledBorder;
-import javax.swing.JTabbedPane;
-import javax.swing.JSplitPane;
-import javax.swing.JScrollPane;
+import java.awt.CardLayout;
+import javax.swing.GroupLayout;
+import javax.swing.GroupLayout.Alignment;
 
 public class Hasierako_Lehioa extends JFrame {
 
@@ -63,7 +62,7 @@ public class Hasierako_Lehioa extends JFrame {
 				Login.getLogin().setVisible(true);
 			}
 		});
-		btnLogin.setForeground(Color.RED);
+		btnLogin.setForeground(Color.WHITE);
 		btnLogin.setFont(new Font("Rockwell", Font.BOLD, 20));
 		btnLogin.setBackground(new Color(178, 34, 34));
 		btnLogin.setBounds(697, 52, 127, 38);
@@ -82,16 +81,32 @@ public class Hasierako_Lehioa extends JFrame {
 				Aukerak.getAukerak().setVisible(true);
 			}
 		});
-		aukerakButton.setIcon(new ImageIcon(Lehio_Nagusia.class.getResource("/Fitxategiak/aukerak_icon.png")));
+		aukerakButton.setIcon(new ImageIcon(Hasierako_Lehioa.class.getResource("/Fitxategiak/aukerak_icon.png")));
 		aukerakButton.setBackground(Color.BLACK);
-		aukerakButton.setBounds(15, 500, 50, 50);
+		aukerakButton.setBounds(10, 522, 50, 50);
 		contentPane.add(aukerakButton);
 		
-		JLabel lblNewLabel = new JLabel("New label");
-		lblNewLabel.setBounds(-10, 52, 928, 350);
-		contentPane.add(lblNewLabel);
-		lblNewLabel.setBackground(Color.BLACK);
-		lblNewLabel.setIcon(new ImageIcon(Hasierako_Lehioa.class.getResource("/Fitxategiak/logo.png")));
+		JPanel panel = new JPanel();
+		panel.setBackground(Color.BLACK);
+		panel.setBounds(-26, 113, 1022, 344);
+		JLabel label = new JLabel(new ImageIcon(Hasierako_Lehioa.class.getResource("/Fitxategiak/logo.png")));
+		contentPane.add(panel);
+		GroupLayout gl_panel = new GroupLayout(panel);
+		gl_panel.setHorizontalGroup(
+			gl_panel.createParallelGroup(Alignment.LEADING)
+				.addGroup(gl_panel.createSequentialGroup()
+					.addGap(5)
+					.addComponent(label, GroupLayout.PREFERRED_SIZE, 1000, Short.MAX_VALUE)
+					.addGap(5))
+		);
+		gl_panel.setVerticalGroup(
+			gl_panel.createParallelGroup(Alignment.LEADING)
+				.addGroup(gl_panel.createSequentialGroup()
+					.addContainerGap()
+					.addComponent(label, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+					.addContainerGap())
+		);
+		panel.setLayout(gl_panel);
 	}
 	
 	public static synchronized Hasierako_Lehioa getHL() {
