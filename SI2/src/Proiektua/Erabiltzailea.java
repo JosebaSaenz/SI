@@ -11,12 +11,14 @@ public class Erabiltzailea {
 	private PelikulaZerrenda ikusitakoPelikulak;
 	private int idUser;
 	private int pasahitza;
+	private ArrayList<String> gomendioak;
 	
 	//Metodoak
 	public Erabiltzailea(int id, int ph){
 		this.idUser = id;
 		this.pasahitza = ph;
 		ikusitakoPelikulak = new PelikulaZerrenda();
+		gomendioak = new ArrayList<String>();
 	}
 	
 	public Erabiltzailea(int id){
@@ -52,4 +54,15 @@ public class Erabiltzailea {
 		return ikusitakoPelikulak.tituluakEtaBalorazioakLortu(idUser);
 	}
 
+	public void gomendioakGehitu(ArrayList<String> pLista) {
+			gomendioak= pLista;
+	}
+	
+	public boolean gomendioaEginda() {
+		return !gomendioak.isEmpty();
+	}
+	
+	public ArrayList<String> getGomendioak(){
+		return gomendioak;
+	}
 }
