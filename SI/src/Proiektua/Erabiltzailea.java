@@ -55,8 +55,14 @@ public class Erabiltzailea {
 	}
 
 	public void gomendioakGehitu(ArrayList<String> pLista) {
-		if (gomendioak != null) {
 			gomendioak= pLista;
-		}
+	}
+	
+	public boolean gomendioaEginda() {
+		return !gomendioak.isEmpty();
+	}
+	
+	public ArrayList<String> getGomendioak(){
+		return gomendioak;
 	}
 }

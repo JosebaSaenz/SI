@@ -25,21 +25,26 @@ public class IragazteSistema {
 	}
 	
 	public ArrayList<String> gomendatu(int idUser) {  
-		ArrayList<String> gomendioak = new ArrayList<String>();
-		Tupla[] balorazioak = this.estimazioak(idUser);
-		TuplaOrdenazioa.getTuplaAntzekOrdenazioa().handTxikOrdenatu(balorazioak);
-		Tupla[] balorazioFinala = new Tupla[10];
-		for (int i=0;i<10;i++) {
-			balorazioFinala[i]= balorazioak[i];
-		}
-		gomendioak = PelikulaKatalogo.getPelikulaKatalogo().tuplatikIzenakLortu(balorazioFinala);
 		try {
-			GomendioSistema.getGomendioSistema().getErabiltzailea(idUser).gomendioakGehitu(gomendioak);
+			Erabiltzailea erab = GomendioSistema.getGomendioSistema().getErabiltzailea(idUser);
+			if (!erab.gomendioaEginda()) {
+				ArrayList<String> gomendioak = new ArrayList<String>();
+				Tupla[] balorazioak = this.estimazioak(idUser);
+				TuplaOrdenazioa.getTuplaAntzekOrdenazioa().handTxikOrdenatu(balorazioak);
+				Tupla[] balorazioFinala = new Tupla[10];
+				for (int i=0;i<10;i++) {
+					balorazioFinala[i]= balorazioak[i];
+				}
+				gomendioak = PelikulaKatalogo.getPelikulaKatalogo().tuplatikIzenakLortu(balorazioFinala);
+				erab.gomendioakGehitu(gomendioak);
+				return gomendioak;
+			}else {
+				return erab.getGomendioak();
+			}
 		} catch (ErabiltzaileaEzDaExistitzenException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		return gomendioak;
+			e.mezua(idUser);
+		}		
+		return null;
 	}
 	
 	public double erabiltzaileaBalorazioaEstimazioa(int idUser, int idMovie) throws ErabiltzaileaEzDaExistitzenException, PelikulaEzDaExistitzenException {
