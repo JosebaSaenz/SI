@@ -33,6 +33,12 @@ public class IragazteSistema {
 			balorazioFinala[i]= balorazioak[i];
 		}
 		gomendioak = PelikulaKatalogo.getPelikulaKatalogo().tuplatikIzenakLortu(balorazioFinala);
+		try {
+			GomendioSistema.getGomendioSistema().getErabiltzailea(idUser).gomendioakGehitu(gomendioak);
+		} catch (ErabiltzaileaEzDaExistitzenException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		return gomendioak;
 	}
 	
