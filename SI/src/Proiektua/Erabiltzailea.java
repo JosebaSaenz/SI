@@ -65,4 +65,6 @@ public class Erabiltzailea {
 	public ArrayList<String> getGomendioak(){
 		return gomendioak;
 	}
+	
+	//hola
 }
