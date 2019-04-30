@@ -93,7 +93,7 @@ public class GomendioSistema {
 		return emaitza;
 	}
 	
-		public boolean pelikulaIkusiDu(int idUser, int idMovie) {
+	public boolean pelikulaIkusiDu(int idUser, int idMovie) {
 		boolean emaitza = false;
 		try {
 			emaitza = GomendioSistema.getGomendioSistema().getErabiltzailea(idUser).ikusiDu(idMovie);
