@@ -64,4 +64,8 @@ public class MVC {
 		Login.getLogin().setPasahitza((pPasahitza));		
 	}
 	
+	public boolean pelikulaIkusiDu(int idUser, int idMovie) {
+		return GomendioSistema.getGomendioSistema().pelikulaIkusiDu(idUser,idMovie);
+	}
+	
 }
