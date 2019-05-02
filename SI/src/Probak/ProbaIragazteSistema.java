@@ -1,6 +1,9 @@
 package Probak;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNotNull;
+
+import java.util.ArrayList;
 
 import org.junit.After;
 import org.junit.AfterClass;
@@ -8,47 +11,29 @@ import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
 
+import Proiektua.GomendioSistema;
+import Proiektua.IragazteSistema;
+
 public class ProbaIragazteSistema {
 
-	@BeforeClass
-	public static void setUpBeforeClass() throws Exception {
-	}
-
-	@AfterClass
-	public static void tearDownAfterClass() throws Exception {
-	}
-
-	@Before
-	public void setUp() throws Exception {
-	}
-
-	@After
-	public void tearDown() throws Exception {
-	}
-
+	
 	@Test
 	public void testGetIragazteSistema() {
-		fail("Not yet implemented");
+		assertNotNull(IragazteSistema.getIragazteSistema());
 	}
 
 	@Test
 	public void testGomendatu() {
-		fail("Not yet implemented");
+		
+		/*
+		 * falta de poner un poco explicado esto
+		 */
+		GomendioSistema.getGomendioSistema().datuakKargatu();
+		ArrayList<String> gomendioa = new ArrayList<String>();
+		gomendioa  = IragazteSistema.getIragazteSistema().gomendatu(4);
+	
+		assertEquals(gomendioa.get(0),"Finding Nemo (2003)");
+		assertEquals(gomendioa.get(1),"Forrest Gump (1994)");
 	}
-
-	@Test
-	public void testErabiltzaileaBalorazioaEstimazioa() {
-		fail("Not yet implemented");
-	}
-
-	@Test
-	public void testProduktuaBalorazioaEstimazioa() {
-		fail("Not yet implemented");
-	}
-
-	@Test
-	public void testEzaugarriaBalorazioaEstimazioa() {
-		fail("Not yet implemented");
-	}
-
 }
+
