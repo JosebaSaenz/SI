@@ -26,7 +26,7 @@ public class GomendioSistema {
 	}
 	
 	public void datuakKargatu() {
-		String kargaMota = ".csv mota2";
+		String kargaMota = ".csv proba";
 		try {
 			DatuenKarga nireDatuenKarga = KargaFactory.getKargaFactory().createKarga(kargaMota);
 			nireDatuenKarga.datuakKargatu();
@@ -92,7 +92,7 @@ public class GomendioSistema {
 		}
 		return emaitza;
 	}
-	
+
 	public boolean pelikulaIkusiDu(int idUser, int idMovie) {
 		boolean emaitza = false;
 		try {
@@ -103,4 +103,43 @@ public class GomendioSistema {
 		return emaitza;
 	}
 
+	public int zenbatPelikulaIkusiDitu(int idUser) {
+		int emaitza = 0;
+		try {
+			emaitza = GomendioSistema.getGomendioSistema().getErabiltzailea(idUser).ikusitakoPelikulaKop();
+		} catch (ErabiltzaileaEzDaExistitzenException e) {
+			e.mezua(idUser);
+		}
+		return emaitza;
+	}
+
+	public boolean gomendioaEginda(int idUser) {
+		boolean emaitza = false;
+		try {
+			emaitza = GomendioSistema.getGomendioSistema().getErabiltzailea(idUser).gomendioaEginda();
+		} catch (ErabiltzaileaEzDaExistitzenException e) {
+			e.mezua(idUser);
+		}
+		return emaitza;
+	}
+
+	public void gomendioakGehitu(int idUser, ArrayList<String> gomendioak) {
+		try {
+			GomendioSistema.getGomendioSistema().getErabiltzailea(idUser).gomendioakGehitu(gomendioak);;
+		} catch (ErabiltzaileaEzDaExistitzenException e) {
+			e.mezua(idUser);
+		}
+	}
+
+	public ArrayList<String> getGomendioak(int idUser) {
+		ArrayList<String> emaitza = null;
+		try {
+			emaitza = GomendioSistema.getGomendioSistema().getErabiltzailea(idUser).getGomendioak();
+		} catch (ErabiltzaileaEzDaExistitzenException e) {
+			e.mezua(idUser);
+		}
+		return emaitza;
+	}
+
 }
+
