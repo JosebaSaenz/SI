@@ -25,26 +25,27 @@ public class IragazteSistema {
 	}
 	
 	public ArrayList<String> gomendatu(int idUser) {  
-		try {
-			Erabiltzailea erab = GomendioSistema.getGomendioSistema().getErabiltzailea(idUser);
-			if (!erab.gomendioaEginda()) {
-				ArrayList<String> gomendioak = new ArrayList<String>();
-				Tupla[] balorazioak = this.estimazioak(idUser);
-				TuplaOrdenazioa.getTuplaAntzekOrdenazioa().handTxikOrdenatu(balorazioak);
-				Tupla[] balorazioFinala = new Tupla[10];
+		ArrayList<String> gomendioak = new ArrayList<String>();
+		if (!GomendioSistema.getGomendioSistema().gomendioaEginda(idUser)) {
+			Tupla[] balorazioak = this.estimazioak(idUser);
+			TuplaOrdenazioa.getTuplaAntzekOrdenazioa().handTxikOrdenatu(balorazioak);
+			Tupla[] balorazioFinala;
+			if(balorazioak.length > 10) {
+				balorazioFinala = new Tupla[10];
 				for (int i=0;i<10;i++) {
 					balorazioFinala[i]= balorazioak[i];
 				}
-				gomendioak = PelikulaKatalogo.getPelikulaKatalogo().tuplatikIzenakLortu(balorazioFinala);
-				erab.gomendioakGehitu(gomendioak);
-				return gomendioak;
-			}else {
-				return erab.getGomendioak();
 			}
-		} catch (ErabiltzaileaEzDaExistitzenException e) {
-			e.mezua(idUser);
-		}		
-		return null;
+			else {
+				balorazioFinala = balorazioak;
+			}
+			gomendioak = PelikulaKatalogo.getPelikulaKatalogo().tuplatikIzenakLortu(balorazioFinala);
+			GomendioSistema.getGomendioSistema().gomendioakGehitu(idUser,gomendioak);
+		}
+		else {
+			gomendioak = GomendioSistema.getGomendioSistema().getGomendioak(idUser);
+		}	
+		return gomendioak;
 	}
 	
 	public double erabiltzaileaBalorazioaEstimazioa(int idUser, int idMovie) throws ErabiltzaileaEzDaExistitzenException, PelikulaEzDaExistitzenException {
@@ -80,16 +81,10 @@ public class IragazteSistema {
 	private Tupla[] estimazioak(int idUser) {
 		ArrayList<Integer> pelikulenIdak = new ArrayList<Integer>();
 		pelikulenIdak = PelikulaKatalogo.getPelikulaKatalogo().idGuztiak();
-		Erabiltzailea erabiltzailea = null;
-		try {
-			erabiltzailea = GomendioSistema.getGomendioSistema().getErabiltzailea(idUser);
-		} catch (ErabiltzaileaEzDaExistitzenException e) {
-			e.printStackTrace();
-		}
-		Tupla[] balorazioak = new Tupla[pelikulenIdak.size()-erabiltzailea.ikusitakoPelikulaKop()];
+		Tupla[] balorazioak = new Tupla[pelikulenIdak.size()-GomendioSistema.getGomendioSistema().zenbatPelikulaIkusiDitu(idUser)];
 		int kont = 0;
 		for (int i=0; i<pelikulenIdak.size();i++) {
-			if (!erabiltzailea.ikusiDu(pelikulenIdak.get(i))) {
+			if (!GomendioSistema.getGomendioSistema().pelikulaIkusiDu(idUser, pelikulenIdak.get(i))) {
 				int idMovie = pelikulenIdak.get(i);
 				double notaerab = erab.balorazioEstimazioa(idUser, idMovie);
 				double notaezaug = ezau.balorazioEstimazioa(idUser, idMovie);
@@ -103,7 +98,7 @@ public class IragazteSistema {
 	}
 	
 	private double notaMediaLortu(double erab, double ezaug, double produk) {
-		return (0.5*erab)+(ezaug*0.25)+(produk*0.25);
+		return (0.25*erab)+(ezaug*0.25)+(produk*0.5);
 	}
 	
 }
