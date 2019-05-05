@@ -1,5 +1,6 @@
 package Salbuespenak;
 
+
 public class PelikulaEzDaExistitzenException extends Exception {
 	
 	public PelikulaEzDaExistitzenException() {

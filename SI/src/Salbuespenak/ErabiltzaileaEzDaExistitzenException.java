@@ -1,5 +1,6 @@
 package Salbuespenak;
 
+
 public class ErabiltzaileaEzDaExistitzenException extends Exception {
 	
 	public ErabiltzaileaEzDaExistitzenException() {

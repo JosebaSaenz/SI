@@ -1,5 +1,6 @@
 package Salbuespenak;
 
+
 public class PelikulaJadanikIkusiDuException extends Exception{
 	public PelikulaJadanikIkusiDuException() {
 		super();

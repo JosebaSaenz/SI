@@ -1,5 +1,6 @@
 package Salbuespenak;
 
+
 public class KargaMotaEzDaExistitzenException extends Exception {
 	
 	public KargaMotaEzDaExistitzenException() {

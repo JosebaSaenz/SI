@@ -1,5 +1,6 @@
 package Salbuespenak;
 
+
 public class EremuakHutsikException extends Exception {
 	
 	public EremuakHutsikException() {

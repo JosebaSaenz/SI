@@ -1,5 +1,6 @@
 package Salbuespenak;
 
+
 public class PasahitzaOkerraException extends Exception {
 	
 	public PasahitzaOkerraException() {

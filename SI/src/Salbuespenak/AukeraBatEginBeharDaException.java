@@ -1,5 +1,6 @@
 package Salbuespenak;
 
+
 public class AukeraBatEginBeharDaException extends Exception {
 	
 	public AukeraBatEginBeharDaException() {
