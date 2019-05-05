@@ -2,7 +2,6 @@ package Probak;
 
 import static org.junit.Assert.*;
 
-
 import Proiektua.Batezbestekoa;
 import Proiektua.Bektorea;
 
