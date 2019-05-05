@@ -98,7 +98,7 @@ public class IragazteSistema {
 	}
 	
 	private double notaMediaLortu(double erab, double ezaug, double produk) {
-		return (0.25*erab)+(ezaug*0.25)+(produk*0.5);
+		return (0.25*erab)+(ezaug*0.5)+(produk*0.25);
 	}
 	
 }

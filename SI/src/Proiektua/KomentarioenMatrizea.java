@@ -17,7 +17,6 @@ public class KomentarioenMatrizea {
 			mat[i] = new Bektorea();
 		}
 		matrizeaBete();
-		//matErabilgarria = ErabilgarritasunKalkulua.getErabilgarritasunKalkulua().erabilgarritasunMatrizeaBete(mat);
 	}
 	
 	public static synchronized KomentarioenMatrizea getKomentarioenMatrizea() {

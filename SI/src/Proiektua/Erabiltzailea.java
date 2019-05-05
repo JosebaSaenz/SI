@@ -24,6 +24,7 @@ public class Erabiltzailea {
 	public Erabiltzailea(int id){
 		this.idUser = id;
 		ikusitakoPelikulak = new PelikulaZerrenda();
+		gomendioak = new ArrayList<String>();
 	}
 
 	public void pelikulaGehitu(int idMovie, Pelikula p){
@@ -65,6 +66,5 @@ public class Erabiltzailea {
 	public ArrayList<String> getGomendioak(){
 		return gomendioak;
 	}
-	
-	//hola
+
 }

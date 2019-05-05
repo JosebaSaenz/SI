@@ -14,12 +14,6 @@ public class BalorazioenMatrizea {
 	private Bektorea[] matErabPeliNormalizatua;
 	private Bektorea[] matPeliErabNormalizatua;
 	
-	/*  
-	 	La clave es el id real de la pelicula y el valor es nuestro id del 1 hasta el kopuru maximo.
-	 	Es necesario para que cuando en un metodo te pasen de parametro el idMovie real podamos hacer el cambio a nuestro id y podamos buscar la pelicula en esa matriz.
-	 	Lo rellenas mientras vas creando la matriz.
-	*/
-	
 	private BalorazioenMatrizea() {		
 		
 		this.peliItzultzailea= new HashMap<Integer,Integer>();
@@ -129,6 +123,10 @@ public class BalorazioenMatrizea {
 
 	public double getBalorazioa(int idUser, int idMovie) {		
 		return matErabPeli[erabItzultzailea.get(idUser)].getBalioa(idMovie);
+	}
+	
+	public void erreseteatu() {
+		BalorazioenMatrizea.nBalorazioenMatrizea = null;
 	}
 	
 }

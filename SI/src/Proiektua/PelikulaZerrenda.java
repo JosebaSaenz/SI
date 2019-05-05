@@ -43,10 +43,6 @@ public class PelikulaZerrenda {
 		return zerrenda;
 	}
 	
-	public ArrayList<Integer> getIdPelikulak() {
-		return idPelikulak;
-	}
-	
 	public void datuakEzabatu() {
 		zerrenda.clear();
 		idPelikulak.clear();

@@ -25,13 +25,12 @@ public class GomendioSistema {
 		return nGomendioSistema;
 	}
 	
-	public void datuakKargatu() {
-		String kargaMota = ".csv proba";
+	public void datuakKargatu(String pKargaMota) {
 		try {
-			DatuenKarga nireDatuenKarga = KargaFactory.getKargaFactory().createKarga(kargaMota);
+			DatuenKarga nireDatuenKarga = KargaFactory.getKargaFactory().createKarga(pKargaMota);
 			nireDatuenKarga.datuakKargatu();
 		} catch (KargaMotaEzDaExistitzenException e) {
-			e.mezua(kargaMota);
+			e.mezua(pKargaMota);
 		}
 	}
 	
@@ -60,10 +59,6 @@ public class GomendioSistema {
 	
 	public HashMap<Integer,Erabiltzailea> getErabiltzaileak() {
 		return erabiltzaileak;
-	}
-	
-	public void erreseteatu() {
-		GomendioSistema.nGomendioSistema = null;
 	}
 
 	public int zenbatErabiltzaile() {
@@ -140,6 +135,9 @@ public class GomendioSistema {
 		}
 		return emaitza;
 	}
+	
+	public void erreseteatu() {
+		GomendioSistema.nGomendioSistema = null;
+	}
 
 }
-
