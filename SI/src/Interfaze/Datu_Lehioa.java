@@ -141,4 +141,5 @@ public class Datu_Lehioa extends JFrame {
 			textArea.append(pelikulak.get(i) + "\n");
 		}
 	}
+	
 }
