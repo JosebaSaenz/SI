@@ -1,6 +1,7 @@
 package Probak;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNotEquals;
 import static org.junit.Assert.assertNotNull;
 
 import java.util.ArrayList;
@@ -177,7 +178,6 @@ public class ProbaIragazteSistema {
 				
 				
 				EZAUGARRI IRAGAZTEA:
-
 				e4 erabiltzaileak p3 pelikulari egingo liokeen balorazioaren estimazioa probatuko dugu:
 			
 				e4-k ikusi dituen pelikulak (balorazioa >=3.5 izanda): p1
@@ -193,8 +193,6 @@ public class ProbaIragazteSistema {
 				Antzekotasuna(pertsonaEredua,produktuEredua) = 0
 			
 				Estimazioa (nota ajustatu ondoren) = 2.5
-
-
 				HIRU IRAGAZTE TEKNIKAK KONBINATUZ:
 				
 				Estimazioa = erab * 0.25 + prod * 0.25 + ezau * 0.5 = 3.5 * 0.25 + 3.2 * 0.25 + 2.7370 * 2.5 = 2.9250
@@ -209,11 +207,14 @@ public class ProbaIragazteSistema {
 		 
 		*/
 		
-		GomendioSistema.getGomendioSistema().datuakKargatu();
+		GomendioSistema.getGomendioSistema().datuakKargatu(".csv proba");
 		ArrayList<String> gomendioa = new ArrayList<String>();
 		gomendioa  = IragazteSistema.getIragazteSistema().gomendatu(4);
 	
 		assertEquals(gomendioa.get(0),"Finding Nemo (2003)");
 		assertEquals(gomendioa.get(1),"Forrest Gump (1994)");
+		
+		assertNotEquals(gomendioa.get(0),"Forrest Gump (1994)");
+		assertNotEquals(gomendioa.get(1),"Finding Nemo (2003)");
 	}
 }

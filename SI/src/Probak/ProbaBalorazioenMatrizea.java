@@ -2,6 +2,7 @@ package Probak;
 
 import static org.junit.Assert.*;
 
+import java.text.DecimalFormat;
 import java.util.ArrayList;
 
 import org.junit.After;
@@ -11,11 +12,14 @@ import org.junit.BeforeClass;
 import org.junit.Test;
 
 import Proiektua.BalorazioenMatrizea;
+import Proiektua.Batezbestekoa;
 import Proiektua.Bektorea;
 import Proiektua.Erabiltzailea;
 import Proiektua.GomendioSistema;
+import Proiektua.NormalizazioKalkulua;
 import Proiektua.Pelikula;
 import Proiektua.PelikulaKatalogo;
+import Proiektua.Zscore;
 
 public class ProbaBalorazioenMatrizea {
 
@@ -258,13 +262,15 @@ public class ProbaBalorazioenMatrizea {
 		assertFalse(bek.bektoreanDago(p1.getPelikulaId()));
 		
 		
-		/*
 		// Normalizazioa Zsore erabiliz egiten dugu
+		
+		BalorazioenMatrizea.getBalorazioenMatrizea().erreseteatu();
+		NormalizazioKalkulua.getNormalizazioKalkulua().normalizazioMotaAldatu(new Zscore());
 		
 		DecimalFormat df = new DecimalFormat("#.0000");
 		
 		// e1 erabiltzaileak baloratu dituen pelikulen ID-ak eta balorazio normalizatuak (Zscore erabiliz) itzuli
-		Bektorea bek = BalorazioenMatrizea.getBalorazioenMatrizea().getErabBalorazioNormalizatuak(e1.getId());
+		bek = BalorazioenMatrizea.getBalorazioenMatrizea().getErabBalorazioNormalizatuak(e1.getId());
 		assertTrue(bek.luzera() == 3);
 		assertTrue(df.format(bek.getBalioa(p1.getPelikulaId())).equals("1,2247"));
 		assertTrue(df.format(bek.getBalioa(p2.getPelikulaId())).equals("-1,2247"));
@@ -291,6 +297,9 @@ public class ProbaBalorazioenMatrizea {
 		assertTrue(bek.luzera() == 1);
 		assertTrue(bek.getBalioa(p2.getPelikulaId()) == 0);
 		assertFalse(bek.bektoreanDago(p1.getPelikulaId()));
+		
+		BalorazioenMatrizea.getBalorazioenMatrizea().erreseteatu();
+		NormalizazioKalkulua.getNormalizazioKalkulua().normalizazioMotaAldatu(new Batezbestekoa());
 		
 	}
 
@@ -325,7 +334,7 @@ public class ProbaBalorazioenMatrizea {
 		assertTrue(bek.getBalioa(e1.getId()) == 3.5);
 		assertTrue(bek.getBalioa(e3.getId()) == 5);
 		assertFalse(bek.bektoreanDago(e2.getId()));
-		*/
+
 	}
 
 	@Test
@@ -363,14 +372,15 @@ public class ProbaBalorazioenMatrizea {
 		assertFalse(bek.bektoreanDago(e2.getId()));
 		
 		
-		
-		/*
 		// Normalizazioa Zsore erabiliz egiten dugu
+		
+		BalorazioenMatrizea.getBalorazioenMatrizea().erreseteatu();
+		NormalizazioKalkulua.getNormalizazioKalkulua().normalizazioMotaAldatu(new Zscore());
 		
 		DecimalFormat df = new DecimalFormat("#.0000");
 		
 		// p1 pelikula baloratu duten erabiltzaileen ID-ak eta balorazio normalizautak (Zscore erabiliz) itzuli
-		Bektorea bek = BalorazioenMatrizea.getBalorazioenMatrizea().getPeliBalorazioNormalizatuak(p1.getPelikulaId());
+		bek = BalorazioenMatrizea.getBalorazioenMatrizea().getPeliBalorazioNormalizatuak(p1.getPelikulaId());
 		assertTrue(bek.luzera() == 2);
 		assertTrue(df.format(bek.getBalioa(e1.getId())).equals("1,2247"));
 		assertTrue(df.format(bek.getBalioa(e3.getId())).equals("-1,6398"));
@@ -397,7 +407,9 @@ public class ProbaBalorazioenMatrizea {
 		assertTrue(bek.getBalioa(e1.getId()) == 0);
 		assertTrue(df.format(bek.getBalioa(e3.getId())).equals("1,0435"));
 		assertFalse(bek.bektoreanDago(e2.getId()));
-		*/
+		
+		BalorazioenMatrizea.getBalorazioenMatrizea().erreseteatu();
+		NormalizazioKalkulua.getNormalizazioKalkulua().normalizazioMotaAldatu(new Batezbestekoa());
 		
 	}
 

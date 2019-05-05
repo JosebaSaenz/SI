@@ -50,7 +50,10 @@ public class ProbaCSVKargaMota1 {
 	
 	@Test
 	public void testDatuakKargatu() throws PelikulaEzDaExistitzenException, ErabiltzaileaEzDaExistitzenException {
-		GomendioSistema.getGomendioSistema().datuakKargatu();
+		
+		// .CSV MOTA1 FITXATEGIAK (movies.csv, rating.csv eta tags.csv) ERABILTZEN DIRA
+		
+		GomendioSistema.getGomendioSistema().datuakKargatu(".csv mota1");
 
 		// datuakKargatu() metodoak hiru metodoei dei egiten die:
 		

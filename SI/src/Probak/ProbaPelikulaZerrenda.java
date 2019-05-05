@@ -82,12 +82,12 @@ public class ProbaPelikulaZerrenda {
 		z1.pelikulaGehitu(p2.getPelikulaId(), p2);
 		
 		assertFalse(z1.getPelikulak().isEmpty());
-		assertFalse(z1.getIdPelikulak().isEmpty());
+		assertFalse(z1.idGuztiak().isEmpty());
 		
 		z1.datuakEzabatu();
 		
 		assertTrue(z1.getPelikulak().isEmpty());
-		assertTrue(z1.getIdPelikulak().isEmpty());
+		assertTrue(z1.idGuztiak().isEmpty());
 	}
 		
 	@Test

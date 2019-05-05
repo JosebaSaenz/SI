@@ -84,10 +84,10 @@ public class ProbaPelikulaKatalogo {
 	}
 
 	@Test
-	public void testPelikulakEskuratu() throws ErabiltzaileaEzDaExistitzenException, PelikulaEzDaExistitzenException, KargaMotaEzDaExistitzenException {
+	public void testPelikulakEskuratu() {
 		
 		// CSVKargaMota1 fitxategieko datuekin egindako probak dira
-		GomendioSistema.getGomendioSistema().datuakKargatu();
+		GomendioSistema.getGomendioSistema().datuakKargatu(".csv mota1");
 		
 		ArrayList<String> tituluak = PelikulaKatalogo.getPelikulaKatalogo().pelikulakEskuratu();
 		assertEquals(tituluak.size(), 9742); 							// 9742 pelikula desberdin irakurtzen dira
@@ -101,8 +101,8 @@ public class ProbaPelikulaKatalogo {
 	}
 
 	@Test
-	public void testDatuakEzabatu() throws ErabiltzaileaEzDaExistitzenException, PelikulaEzDaExistitzenException, KargaMotaEzDaExistitzenException {
-		GomendioSistema.getGomendioSistema().datuakKargatu();
+	public void testDatuakEzabatu() {
+		GomendioSistema.getGomendioSistema().datuakKargatu(".csv mota1");
 		
 		assertNotEquals(PelikulaKatalogo.getPelikulaKatalogo().getPelikulak().size(),0);
 		PelikulaKatalogo.getPelikulaKatalogo().datuakEzabatu();

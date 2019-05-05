@@ -64,8 +64,8 @@ public class ProbaGomendioSistema {
 	}
 
 	@Test
-	public void testDatuakKargatu() throws ErabiltzaileaEzDaExistitzenException, PelikulaEzDaExistitzenException, KargaMotaEzDaExistitzenException {
-		GomendioSistema.getGomendioSistema().datuakKargatu();
+	public void testDatuakKargatu() {
+		GomendioSistema.getGomendioSistema().datuakKargatu(".csv mota1");
 		
 		// datuakKargatu() metodoan datuen karga mota sortzen da (KargaFactory.createKarga() metodoan frogatu duguna)
 		// eta karga motaren arabera DatuenKarga.datuakKargatu() metodoa exekutatzen du (DatuenKarga.datuakKargatu() metodoan frogatu duguna).
@@ -105,16 +105,16 @@ public class ProbaGomendioSistema {
 	}
 
 	@Test
-	public void testDatuakEzabatu() throws ErabiltzaileaEzDaExistitzenException, PelikulaEzDaExistitzenException, KargaMotaEzDaExistitzenException {
-		GomendioSistema.getGomendioSistema().datuakKargatu();
+	public void testDatuakEzabatu() {
+		GomendioSistema.getGomendioSistema().datuakKargatu(".csv mota1");
 		assertNotEquals(GomendioSistema.getGomendioSistema().getErabiltzaileak().size(),0);
 		GomendioSistema.getGomendioSistema().datuakEzabatu();
 		assertEquals(GomendioSistema.getGomendioSistema().getErabiltzaileak().size(),0);
 	}
 	
 	@Test
-	public void testKomentarioaGordetaDago() throws ErabiltzaileaEzDaExistitzenException, PelikulaEzDaExistitzenException, KargaMotaEzDaExistitzenException {
-		GomendioSistema.getGomendioSistema().datuakKargatu();
+	public void testKomentarioaGordetaDago() {
+		GomendioSistema.getGomendioSistema().datuakKargatu(".csv mota1");
 		assertTrue(GomendioSistema.getGomendioSistema().komentarioaGordetaDago("comedy"));
 		assertTrue(GomendioSistema.getGomendioSistema().komentarioaGordetaDago("boring"));
 		assertFalse(GomendioSistema.getGomendioSistema().komentarioaGordetaDago("ezDaExistitzen"));
@@ -131,7 +131,7 @@ public class ProbaGomendioSistema {
 	}
 	
 	@Test
-	public void testIkusitakoPelikulakLortu() throws ErabiltzaileaEzDaExistitzenException {
+	public void testIkusitakoPelikulakLortu() {
 		GomendioSistema.getGomendioSistema().gehituErabiltzailea(e1.getId(), e1);
 		PelikulaKatalogo.getPelikulaKatalogo().gehituPelikula(p1.getPelikulaId(), p1);
 		PelikulaKatalogo.getPelikulaKatalogo().gehituPelikula(p1.getPelikulaId(), p1);

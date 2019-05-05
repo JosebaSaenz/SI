@@ -69,6 +69,14 @@ public class ProbaKosinua {
 				
 		assertTrue(df.format(k2.antzekotasunaKalkulatu(bek3, bek4)).equals(",1558"));
 		assertFalse(df.format(k2.antzekotasunaKalkulatu(bek3, bek4)).equals(",5000"));		// asmatutako balioa
+	
+		// Proba3
+		
+		Bektorea bek5 = new Bektorea();
+		Bektorea bek6 = new Bektorea();
+						
+		assertTrue(k2.antzekotasunaKalkulatu(bek5, bek6) == 0);
+		assertFalse(k2.antzekotasunaKalkulatu(bek5, bek6) == 1);	// asmatutako balioa
 		
 	}
 

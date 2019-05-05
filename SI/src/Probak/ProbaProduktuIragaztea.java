@@ -53,8 +53,8 @@ public class ProbaProduktuIragaztea {
 	}
 
 	@Test
-	public void testBalorazioEstimazioa() throws ErabiltzaileaEzDaExistitzenException, PelikulaEzDaExistitzenException, KargaMotaEzDaExistitzenException {
-		GomendioSistema.getGomendioSistema().datuakKargatu();
+	public void testBalorazioEstimazioa() {
+		GomendioSistema.getGomendioSistema().datuakKargatu(".csv proba");
 		
 		DecimalFormat df = new DecimalFormat("#.0");
 		
