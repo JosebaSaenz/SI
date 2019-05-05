@@ -1,5 +1,6 @@
 package Proiektua;
 
+
 public class TfIdf implements ErabilgarritasunMetodoa {
 
 	public TfIdf() {}

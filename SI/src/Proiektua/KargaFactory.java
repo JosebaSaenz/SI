@@ -1,5 +1,6 @@
 package Proiektua;
 
+
 import Salbuespenak.KargaMotaEzDaExistitzenException;
 
 public class KargaFactory {

@@ -1,5 +1,6 @@
 package Proiektua;
 
+
 public class NormalizazioKalkulua {
 
 	private static NormalizazioKalkulua nNormalizazioKalkulua;

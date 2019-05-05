@@ -1,6 +1,5 @@
 package Proiektua;
 
-
 public abstract class DatuenKarga {
 	
 	public DatuenKarga() {}

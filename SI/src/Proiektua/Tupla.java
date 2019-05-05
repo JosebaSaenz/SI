@@ -1,5 +1,6 @@
 package Proiektua;
 
+
 public class Tupla {
 	
 	private int id;

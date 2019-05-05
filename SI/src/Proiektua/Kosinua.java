@@ -1,5 +1,6 @@
 package Proiektua;
 
+
 public class Kosinua implements AntzekotasunNeurria {
 	
 	public Kosinua() {}

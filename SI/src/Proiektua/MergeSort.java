@@ -1,5 +1,6 @@
 package Proiektua;
 
+
 public class MergeSort implements OrdenazioAlgoritmoa {
 
 	public MergeSort() {}

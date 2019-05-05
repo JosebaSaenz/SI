@@ -1,5 +1,6 @@
 package Proiektua;
 
+
 import java.util.ArrayList;
 
 public class ErabiltzaileIragaztea {

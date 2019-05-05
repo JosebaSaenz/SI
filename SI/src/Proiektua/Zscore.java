@@ -1,5 +1,6 @@
 package Proiektua;
 
+
 public class Zscore implements Normalizazioa{
 	
 	public Zscore() {}

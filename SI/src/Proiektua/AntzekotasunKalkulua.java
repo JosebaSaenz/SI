@@ -1,5 +1,6 @@
 package Proiektua;
 
+
 public class AntzekotasunKalkulua {
 	
 	private static AntzekotasunKalkulua nAntzekotasunKalkulua;

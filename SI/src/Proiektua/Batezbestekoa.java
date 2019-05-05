@@ -1,5 +1,6 @@
 package Proiektua;
 
+
 public class Batezbestekoa implements Normalizazioa {
 
 	public Batezbestekoa(){}

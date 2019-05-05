@@ -1,5 +1,6 @@
 package Proiektua;
 
+
 public class ErabilgarritasunKalkulua {
 	
 	private static ErabilgarritasunKalkulua nErabilgarritasunKalkulua;

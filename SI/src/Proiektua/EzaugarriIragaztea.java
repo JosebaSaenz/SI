@@ -1,6 +1,5 @@
 package Proiektua;
 
-
 public class EzaugarriIragaztea {
 
 	public EzaugarriIragaztea() {}

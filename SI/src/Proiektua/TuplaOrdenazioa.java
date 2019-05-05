@@ -1,5 +1,6 @@
 package Proiektua;
 
+
 public class TuplaOrdenazioa {
 	private static TuplaOrdenazioa nTuplaAntzekOrdenazioa;
 	private OrdenazioAlgoritmoa algoritmoa;
