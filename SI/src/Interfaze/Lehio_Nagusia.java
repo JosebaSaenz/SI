@@ -2,7 +2,6 @@ package Interfaze;
 
 import java.awt.EventQueue;
 
-
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
@@ -136,7 +135,7 @@ public class Lehio_Nagusia extends JFrame {
 		JPanel panel = new JPanel();
 		panel.setBackground(Color.BLACK);
 		panel.setBounds(47, 35, 200, 75);
-		ImageIcon logoIcon = new ImageIcon("src/Fitxategiak/logo.png");
+		ImageIcon logoIcon = new ImageIcon(Lehio_Nagusia.class.getResource("/Fitxategiak/logo.png"));
 		Image logoIrudi = logoIcon.getImage();
 		logoIrudi = logoIrudi.getScaledInstance(200, 75, Image.SCALE_DEFAULT);
 		logoIcon = new ImageIcon(logoIrudi);

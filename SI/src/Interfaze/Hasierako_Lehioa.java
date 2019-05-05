@@ -3,7 +3,6 @@ package Interfaze;
 import java.awt.EventQueue;
 import java.awt.Image;
 
-
 import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
@@ -52,7 +51,7 @@ public class Hasierako_Lehioa extends JFrame {
 		JPanel panel = new JPanel();
 		panel.setBackground(Color.BLACK);
 		panel.setBounds(178, 168, 563, 189);
-		ImageIcon logoIcon = new ImageIcon("src/Fitxategiak/logo.png");
+		ImageIcon logoIcon = new ImageIcon(Lehio_Nagusia.class.getResource("/Fitxategiak/logo.png"));
 		Image logoIrudi = logoIcon.getImage();
 		logoIrudi = logoIrudi.getScaledInstance(560, 185, Image.SCALE_DEFAULT);
 		logoIcon = new ImageIcon(logoIrudi);

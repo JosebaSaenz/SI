@@ -14,7 +14,6 @@ import javax.swing.SwingConstants;
 import java.awt.Color;
 import java.awt.Font;
 
-
 public class DialogErabiltzaileaEzDaExistitzen extends JDialog {
 	
 	private JLabel jLabel1 = new JLabel();

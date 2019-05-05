@@ -8,7 +8,6 @@ import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 import javax.swing.text.BadLocationException;
 
-
 import Proiektua.GomendioSistema;
 import Salbuespenak.AukeraBatEginBeharDaException;
 import Salbuespenak.ErabiltzaileaEzDaExistitzenException;

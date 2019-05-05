@@ -147,5 +147,4 @@ public class Aukerak extends JFrame {
 		}
 		return nAukerak;
 	}
-	
 }

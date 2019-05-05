@@ -2,7 +2,6 @@ package Interfaze;
 
 import java.util.ArrayList;
 
-
 import Proiektua.GomendioSistema;
 import Proiektua.IragazteSistema;
 import Proiektua.PelikulaKatalogo;

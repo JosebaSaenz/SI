@@ -2,7 +2,6 @@ package Interfaze;
 
 import java.awt.EventQueue;
 
-
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
@@ -199,7 +198,7 @@ public class Login extends JFrame {
 		panel_1.setBackground(Color.BLACK);
 		panel_1.setBounds(195, 11, 181, 117);
 		contentPane.add(panel_1);
-		panel_1.add(new JLabel(new ImageIcon("src/Fitxategiak/erabLogo.png")));
+		panel_1.add(new JLabel(new ImageIcon(Login.class.getResource("/Fitxategiak/erabLogo.png"))));
 		
 		JButton button = new JButton("");
 		button.addActionListener(new ActionListener() {
