@@ -13,6 +13,7 @@ import javax.swing.SwingConstants;
 import java.awt.Font;
 import java.awt.Color;
 
+
 public class DialogAukeraBatEginBeharDa extends JDialog {
 	
 	private JLabel jLabel1 = new JLabel();
