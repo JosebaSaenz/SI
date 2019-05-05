@@ -50,10 +50,10 @@ public class Hasierako_Lehioa extends JFrame {
 		
 		JPanel panel = new JPanel();
 		panel.setBackground(Color.BLACK);
-		panel.setBounds(178, 168, 563, 189);
-		ImageIcon logoIcon = new ImageIcon(Lehio_Nagusia.class.getResource("/Fitxategiak/logo.png"));
+		panel.setBounds(165, 200, 600, 165);
+		ImageIcon logoIcon = new ImageIcon("src/Fitxategiak/logo.png");
 		Image logoIrudi = logoIcon.getImage();
-		logoIrudi = logoIrudi.getScaledInstance(560, 185, Image.SCALE_DEFAULT);
+		logoIrudi = logoIrudi.getScaledInstance(600, 165, Image.SCALE_DEFAULT);
 		logoIcon = new ImageIcon(logoIrudi);
 		panel.add(new JLabel(logoIcon));
 		contentPane.add(panel);
