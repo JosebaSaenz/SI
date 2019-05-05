@@ -9,6 +9,10 @@ import java.awt.event.ActionListener;
 import javax.swing.JButton;
 import javax.swing.JDialog;
 import javax.swing.JLabel;
+import java.awt.Toolkit;
+import javax.swing.SwingConstants;
+import java.awt.Font;
+import java.awt.Color;
 
 public class DialogPelikulaEzDaExistitzen extends JDialog {
 	
@@ -17,15 +21,24 @@ public class DialogPelikulaEzDaExistitzen extends JDialog {
 	private int idMovie;
 	
 	public DialogPelikulaEzDaExistitzen(int pIdMovie) {
+		getContentPane().setBackground(Color.DARK_GRAY);
+		setTitle("Arazoa gertatu da");
+		setIconImage(Toolkit.getDefaultToolkit().getImage(DialogPelikulaEzDaExistitzen.class.getResource("/Fitxategiak/dialog_icon.png")));
 		idMovie = pIdMovie;
 		this.setModal(true);
 		this.setLocation(500,300);
-		this.setSize(new Dimension(400,135));
+		this.setSize(new Dimension(450, 160));
 		this.getContentPane().setLayout(null);
+		jLabel1.setForeground(Color.WHITE);
+		jLabel1.setFont(new Font("Tahoma", Font.BOLD, 16));
+		jLabel1.setHorizontalAlignment(SwingConstants.CENTER);
 		jLabel1.setText("'" + idMovie + "' pelikula ez da existitzen.");
-		jLabel1.setBounds(new Rectangle(100,20,300,15));
+		jLabel1.setBounds(new Rectangle(0, 20, 428, 15));
+		jButton1.setForeground(Color.BLACK);
+		jButton1.setBackground(Color.RED);
+		jButton1.setFont(new Font("Tahoma", Font.BOLD, 16));
 		jButton1.setText("Itxi");
-		jButton1.setBounds(new Rectangle(150,55,70,30));
+		jButton1.setBounds(new Rectangle(180, 55, 70, 30));
 		this.getContentPane().add(jButton1,null);
 		this.getContentPane().add(jLabel1,null);
 		

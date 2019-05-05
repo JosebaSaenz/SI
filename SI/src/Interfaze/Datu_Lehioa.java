@@ -64,6 +64,9 @@ public class Datu_Lehioa extends JFrame {
 		contentPane.add(scrollPane);
 		
 		textArea = new JTextArea();
+		textArea.setFont(new Font("Segoe UI", Font.BOLD, 13));
+		textArea.setBackground(Color.GRAY);
+		textArea.setForeground(Color.BLACK);
 		textArea.setEditable(false);
 		scrollPane.setViewportView(textArea);
 		

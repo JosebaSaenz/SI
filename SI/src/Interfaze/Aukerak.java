@@ -67,6 +67,7 @@ public class Aukerak extends JFrame {
 		button.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				setVisible(false);
+				passwordField.setText("");
 				Hasierako_Lehioa.getHL().setVisible(true);
 			}
 		});
@@ -86,12 +87,13 @@ public class Aukerak extends JFrame {
 		button_1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				try{
-					String pasahitza = passwordField.getText();
-					if(passwordField.getText().isEmpty()) {
+					String pasahitza = String.valueOf(passwordField.getPassword());
+					if(String.valueOf(passwordField.getPassword()).isEmpty()) {
 						throw new EremuakHutsikException();
 					}
 					else if(pasahitza.equals("1234")) {
 						setVisible(false);
+						passwordField.setText("");
 						IragazteaAukeratu.getIragaztea().setVisible(true);
 					}
 					else {

@@ -15,9 +15,6 @@ import java.awt.Font;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import java.awt.Toolkit;
-import java.awt.CardLayout;
-import javax.swing.GroupLayout;
-import javax.swing.GroupLayout.Alignment;
 
 public class Hasierako_Lehioa extends JFrame {
 
@@ -50,10 +47,16 @@ public class Hasierako_Lehioa extends JFrame {
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
+		
+		JPanel panel = new JPanel();
+		panel.setBackground(Color.BLACK);
+		panel.setBounds(178, 168, 563, 189);
 		ImageIcon logoIcon = new ImageIcon("src/Fitxategiak/logo.png");
 		Image logoIrudi = logoIcon.getImage();
 		logoIrudi = logoIrudi.getScaledInstance(560, 185, Image.SCALE_DEFAULT);
 		logoIcon = new ImageIcon(logoIrudi);
+		panel.add(new JLabel(logoIcon));
+		contentPane.add(panel);
 		
 		JButton btnLogin = new JButton("Login");
 		btnLogin.addActionListener(new ActionListener() {
@@ -81,32 +84,10 @@ public class Hasierako_Lehioa extends JFrame {
 				Aukerak.getAukerak().setVisible(true);
 			}
 		});
-		aukerakButton.setIcon(new ImageIcon(Hasierako_Lehioa.class.getResource("/Fitxategiak/aukerak_icon.png")));
+		aukerakButton.setIcon(new ImageIcon(Lehio_Nagusia.class.getResource("/Fitxategiak/aukerak_icon.png")));
 		aukerakButton.setBackground(Color.BLACK);
-		aukerakButton.setBounds(10, 522, 50, 50);
+		aukerakButton.setBounds(15, 500, 50, 50);
 		contentPane.add(aukerakButton);
-		
-		JPanel panel = new JPanel();
-		panel.setBackground(Color.BLACK);
-		panel.setBounds(-26, 113, 1022, 344);
-		JLabel label = new JLabel(new ImageIcon(Hasierako_Lehioa.class.getResource("/Fitxategiak/logo.png")));
-		contentPane.add(panel);
-		GroupLayout gl_panel = new GroupLayout(panel);
-		gl_panel.setHorizontalGroup(
-			gl_panel.createParallelGroup(Alignment.LEADING)
-				.addGroup(gl_panel.createSequentialGroup()
-					.addGap(5)
-					.addComponent(label, GroupLayout.PREFERRED_SIZE, 1000, Short.MAX_VALUE)
-					.addGap(5))
-		);
-		gl_panel.setVerticalGroup(
-			gl_panel.createParallelGroup(Alignment.LEADING)
-				.addGroup(gl_panel.createSequentialGroup()
-					.addContainerGap()
-					.addComponent(label, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-					.addContainerGap())
-		);
-		panel.setLayout(gl_panel);
 	}
 	
 	public static synchronized Hasierako_Lehioa getHL() {

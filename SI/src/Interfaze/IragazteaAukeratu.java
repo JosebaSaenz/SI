@@ -14,6 +14,7 @@ import Salbuespenak.ErabiltzaileaEzDaExistitzenException;
 import Salbuespenak.EremuakHutsikException;
 import Salbuespenak.KargaMotaEzDaExistitzenException;
 import Salbuespenak.PelikulaEzDaExistitzenException;
+import Salbuespenak.PelikulaJadanikIkusiDuException;
 
 import javax.swing.ButtonGroup;
 import javax.swing.ImageIcon;
@@ -56,9 +57,8 @@ public class IragazteaAukeratu extends JFrame {
 	 * @throws ErabiltzaileaEzDaExistitzenException 
 	 */
 	private IragazteaAukeratu() {
-		GomendioSistema.getGomendioSistema().datuakKargatu();
 		setTitle("Balorazioen estimazioa");
-		setIconImage(Toolkit.getDefaultToolkit().getImage(IragazteaAukeratu.class.getResource("/Fitxategiak/lehioa_icon.png")));
+		setIconImage(Toolkit.getDefaultToolkit().getImage(IragazteaAukeratu.class.getResource("/Fitxategiak/aukerak_icon.png")));
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 537, 374);
 		contentPane = new JPanel();
@@ -67,7 +67,6 @@ public class IragazteaAukeratu extends JFrame {
 		contentPane.setLayout(null);
 		
 		JButton btnNewButton = new JButton("");
-		btnNewButton.setBackground(Color.BLACK);
 		btnNewButton.setIcon(new ImageIcon(Datu_Lehioa.class.getResource("/Fitxategiak/back_icon.png")));
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
@@ -133,7 +132,8 @@ public class IragazteaAukeratu extends JFrame {
 						int eID = Integer.parseInt(txtIderabiltzailea.getText());
 						int pID = Integer.parseInt(txtIdpelikula.getText());
 						Double b = null;
-						if (ErabIr.isSelected()) {
+						boolean ikusiDu = MVC.getMVC().pelikulaIkusiDu(eID,pID);
+						if (ErabIr.isSelected() && !ikusiDu) {
 							try {
 								b = MVC.getMVC().erabiltzaileaBalorazioaEstimazioa(eID, pID);
 								String emaitza = b.toString();
@@ -148,7 +148,7 @@ public class IragazteaAukeratu extends JFrame {
 								dp.setVisible(true);
 							}
 						}
-						else if (ProdIr.isSelected()) {
+						else if (ProdIr.isSelected() && !ikusiDu) {
 							try {
 								b = MVC.getMVC().produktuaBalorazioaEstimazioa(eID, pID);
 								String emaitza = b.toString();
@@ -163,7 +163,7 @@ public class IragazteaAukeratu extends JFrame {
 								dp.setVisible(true);
 							}
 						}
-						else if (EzaIr.isSelected()) {
+						else if (EzaIr.isSelected() && !ikusiDu) {
 							try {
 								b = MVC.getMVC().ezaugarriaBalorazioaEstimazioa(eID, pID);
 								String emaitza = b.toString();
@@ -176,7 +176,17 @@ public class IragazteaAukeratu extends JFrame {
 								e1.mezua(pID);
 								DialogPelikulaEzDaExistitzen dp = new DialogPelikulaEzDaExistitzen(pID);
 								dp.setVisible(true);
-							}					}
+							}					
+						}
+						else if (ikusiDu) {
+							try {
+								throw new PelikulaJadanikIkusiDuException();
+							} catch (PelikulaJadanikIkusiDuException e1) {
+								e1.mezua(eID, pID);
+								DialogPelikulaJadanikIkusiDu da = new DialogPelikulaJadanikIkusiDu(eID,pID);
+								da.setVisible(true);
+							}
+						}
 						else {
 							throw new AukeraBatEginBeharDaException();
 						}
